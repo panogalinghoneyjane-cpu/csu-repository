@@ -36,9 +36,9 @@
     }
 @endphp
 
-<header class="no-print bg-csu-800 text-white">
-    <div class="px-4 md:px-6 py-3 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
+<header class="no-print bg-csu-800 text-white"
+        style="background-image: linear-gradient(to right, rgba(17,77,36,1) 0%, rgba(17,77,36,0.40) 100%, ), url('{{ asset('image/csu head.webp') }}'); background-size: auto, auto 420px; background-position: center, center 35%; background-repeat: no-repeat;"> <div class="px-4 md:px-6 py-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
             <button type="button" class="md:hidden text-2xl leading-none" onclick="document.getElementById('sidebar').classList.toggle('hidden')">&#9776;</button>
             <div>
                 <p class="font-semibold leading-tight">CSU Digital Library Repository</p>
@@ -60,7 +60,7 @@
         <nav class="space-y-1">
             @foreach ($links as [$label, $url, $pattern])
                 <a href="{{ $url }}"
-                   class="block px-3 py-2 rounded text-sm {{ request()->routeIs($pattern) ? 'bg-csu-50 text-csu-800 font-semibold' : 'hover:bg-gray-50' }}">
+                   class="block px-3 py-2 rounded text-sm text-csu-800 font-semibold {{ request()->routeIs($pattern) ? 'bg-csu-50' : 'hover:bg-gray-50' }}">
                     {{ $label }}
                 </a>
             @endforeach

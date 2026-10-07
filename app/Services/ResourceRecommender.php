@@ -39,7 +39,7 @@ class ResourceRecommender
     /** Related resources shown beside the reader. */
     public function forResource(Resource $resource, int $limit = 5): Collection
     {
-        return $this->score(collect([$resource]), collect(), $limit);
+        return $this->score($resource->newCollection([$resource]), collect(), $limit);
     }
 
     private function score(Collection $seeds, Collection $words, int $limit): Collection

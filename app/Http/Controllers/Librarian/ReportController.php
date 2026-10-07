@@ -57,18 +57,9 @@ class ReportController extends Controller
             'topResources' => (clone $resourceBase)->with('subject')
                 ->withCount(['accessLogs' => fn ($q) => $q->whereBetween('accessed_at', [$f['from'], $f['to']])])
                 ->orderByDesc('access_logs_count')->take(10)->get(),
-            'unused' => (clone $resourceBase)->with('subject')
-                ->whereDoesntHave('accessLogs', fn ($q) => $q->whereBetween('accessed_at', [$f['from'], $f['to']]))
-                ->orderBy('publication_year')->take(10)->get(),
             'byRole' => (clone $usageBase)->join('users', 'users.id', '=', 'access_logs.user_id')
                 ->selectRaw('users.role, count(*) as total')->groupBy('users.role')->pluck('total', 'role'),
             'monthly' => $this->monthlyViews($f),
-            'topKeywords' => SearchLog::whereBetween('searched_at', [$f['from'], $f['to']])
-                ->selectRaw('lower(keyword) as keyword, count(*) as total')->groupByRaw('lower(keyword)')
-                ->orderByDesc('total')->take(10)->get(),
-            'zeroResults' => SearchLog::whereBetween('searched_at', [$f['from'], $f['to']])->where('results_count', 0)
-                ->selectRaw('lower(keyword) as keyword, count(*) as total')->groupByRaw('lower(keyword)')
-                ->orderByDesc('total')->take(10)->get(),
             'recommendations' => Recommendation::whereBetween('created_at', [$f['from'], $f['to']])
                 ->selectRaw('status, count(*) as total')->groupBy('status')->pluck('total', 'status'),
             'colleges' => College::orderBy('code')->get(),

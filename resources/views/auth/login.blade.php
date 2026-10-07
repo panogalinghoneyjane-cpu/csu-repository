@@ -6,9 +6,13 @@
     <title>Login · CSU Digital Library</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-green-900 to-green-700 flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-4"
+      style="background:
+             linear-gradient(rgba(17, 77, 36, 0.4), rgba(17, 77, 36, 0.4)),
+             url('{{ asset('image/csu4.jpg') }}') center / cover no-repeat fixed,
+             #114d24;">
     <div class="bg-white shadow-xl rounded-xl p-8 w-full max-w-sm">
-        <div class="mx-auto mb-3 h-14 w-14 rounded-full bg-green-100 flex items-center justify-center text-2xl">📚</div>
+       <img src="{{ asset('image/csulogo.png') }}" alt="Caraga State University logo" class="mx-auto mb-3 h-20 w-20 object-contain">
         <h1 class="text-xl font-bold text-green-900 text-center">CSU Digital Library</h1>
         <p class="text-sm text-gray-500 text-center mb-6">Caraga State University – Main Campus</p>
 
