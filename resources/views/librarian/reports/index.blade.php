@@ -183,12 +183,21 @@
 
         <div class="bg-white rounded-lg border p-5">
             <h3 class="font-semibold mb-3">Usage by Role</h3>
+            <p class="text-xs text-gray-500 -mt-2 mb-2">Click a role to see who opened which resources.</p>
             @foreach (['student' => 'Students', 'faculty' => 'Faculty', 'librarian' => 'Librarians'] as $role => $label)
-                <div class="flex justify-between border-t py-2 text-sm"><span>{{ $label }}</span><span class="font-semibold">{{ $byRole[$role] ?? 0 }}</span></div>
+                <a href="{{ route('librarian.access-logs.index', array_merge(request()->except(['tab', 'page']), ['role' => $role])) }}"
+                   class="flex justify-between border-t py-2 text-sm hover:bg-csu-50 hover:text-csu-800 -mx-2 px-2 rounded">
+                    <span>{{ $label }} <span class="text-csu-700">›</span></span><span class="font-semibold">{{ $byRole[$role] ?? 0 }}</span>
+                </a>
             @endforeach
+            <a href="{{ route('librarian.access-logs.index', request()->except(['tab', 'page'])) }}" class="block text-xs text-csu-700 hover:underline mt-2">View all access logs ›</a>
+
             <h3 class="font-semibold mt-5 mb-3">Faculty Recommendations</h3>
             @foreach (\App\Models\Recommendation::STATUS_LABELS as $status => $label)
-                <div class="flex justify-between border-t py-2 text-sm"><span>{{ $label }}</span><span class="font-semibold">{{ $recommendations[$status] ?? 0 }}</span></div>
+                <a href="{{ route('librarian.reviews.index', ['status' => $status]) }}"
+                   class="flex justify-between border-t py-2 text-sm hover:bg-csu-50 hover:text-csu-800 -mx-2 px-2 rounded">
+                    <span>{{ $label }} <span class="text-csu-700">›</span></span><span class="font-semibold">{{ $recommendations[$status] ?? 0 }}</span>
+                </a>
             @endforeach
         </div>
     </div>

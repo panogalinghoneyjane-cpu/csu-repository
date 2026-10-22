@@ -89,7 +89,26 @@ class ReportController extends Controller
             fclose($out);
         }, $filename, ['Content-Type' => 'text/csv']);
     }
+    /** Access Logs: who opened which resource, and when (librarian only). */
+    public function accessLogs(Request $request)
+    {
+        $f = $this->filters($request);
+        $role = in_array($request->query('role'), ['student', 'faculty', 'librarian'], true) ? $request->query('role') : null;
+        $search = trim((string) $request->query('q', ''));
 
+        $logs = AccessLog::with(['user', 'resource.subject'])
+            ->whereBetween('accessed_at', [$f['from'], $f['to']])
+            ->whereIn('resource_id', $this->resourceQuery($f)->select('id'))
+            ->when($role, fn ($q) => $q->whereHas('user', fn ($u) => $u->where('role', $role)))
+            ->when($search !== '', fn ($q) => $q->where(fn ($w) => $w
+                ->whereHas('user', fn ($u) => $u->where(fn ($x) => $x->where('name', 'like', "%{$search}%")->orWhere('id_number', 'like', "%{$search}%")))
+                ->orWhereHas('resource', fn ($r) => $r->where('title', 'like', "%{$search}%"))))
+            ->latest('accessed_at')
+            ->paginate(25)
+            ->withQueryString();
+
+        return view('librarian.reports.access-logs', compact('logs', 'f', 'role', 'search'));
+    }
     private function filters(Request $request): array
     {
         return [

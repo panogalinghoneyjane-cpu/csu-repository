@@ -95,5 +95,5 @@ Route::middleware(['auth', 'role:librarian'])->prefix('librarian')->name('librar
 
     // Monitoring & reports
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
-    Route::get('/reports/export', [ReportController::class, 'export'])->name('reports.export');
+    Route::get('/access-logs', [ReportController::class, 'accessLogs'])->name('access-logs.index');
 });
