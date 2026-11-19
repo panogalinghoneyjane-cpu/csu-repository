@@ -8,6 +8,17 @@
 </nav>
 <h1 class="text-2xl font-bold mb-6">{{ $program->name }}</h1>
 
+<form class="flex flex-wrap items-center justify-between gap-2 mb-4 text-sm">
+    <p class="text-gray-500">{{ $program->subjects->count() }} {{ Str::plural('course', $program->subjects->count()) }}</p>
+    <label class="flex items-center gap-2">
+        <span class="text-gray-600">Sort by</span>
+        <select name="sort" onchange="this.form.submit()" class="border rounded px-3 py-1.5 bg-white">
+            @foreach ($sorts as $value => [$label])
+                <option value="{{ $value }}" @selected($sort === $value)>{{ $label }}</option>
+            @endforeach
+        </select>
+    </label>
+</form>
 <div class="bg-white rounded-lg border divide-y">
     @forelse ($program->subjects as $subject)
         <a href="{{ route('browse.subject', $subject) }}" class="flex items-center justify-between px-5 py-4 hover:bg-gray-50">
@@ -18,7 +29,7 @@
             <span class="text-sm text-gray-500">{{ $subject->active_resources_count }} resources ›</span>
         </a>
     @empty
-        <p class="p-5 text-gray-500">No subjects yet.</p>
+        <p class="p-5 text-gray-500">No courses yet.</p>
     @endforelse
 </div>
 @endsection

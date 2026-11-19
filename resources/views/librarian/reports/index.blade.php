@@ -1,30 +1,13 @@
 @extends('layouts.app')
-@section('title', 'Reports & Monitoring')
+@section('title', 'Reports')
 
 @section('content')
 @php
-    // Which tab is open: "generate" (Generate Reports) or "monitor" (Monitoring Resources)
-    $tab = request('tab', 'generate') === 'monitor' ? 'monitor' : 'generate';
-    $statusColors = ['Sufficient' => 'bg-green-100 text-green-800', 'Needs Update' => 'bg-orange-100 text-orange-800', 'Insufficient' => 'bg-red-100 text-red-800'];
+    $statusColors = ['Sufficient' => 'bg-green-100 text-green-800', 'Needs Update' => 'bg-orange-100 text-orange-800', 'Lacking Resources' => 'bg-red-100 text-red-800'];
 @endphp
 
-<h1 class="text-2xl font-bold mb-4">Reports & Monitoring</h1>
+<h1 class="text-2xl font-bold mb-4">Reports</h1>
 
-{{-- ============================================================
-     TABS
-     ============================================================ --}}
-<div class="no-print flex gap-1 border-b mb-6">
-    <a href="{{ route('librarian.reports.index', array_merge(request()->except('tab'), ['tab' => 'generate'])) }}"
-       class="px-4 py-2 -mb-px border-b-2 font-semibold {{ $tab === 'generate' ? 'border-csu-700 text-csu-800' : 'border-transparent text-gray-500 hover:text-csu-700' }}">
-        Generate Reports
-    </a>
-    <a href="{{ route('librarian.reports.index', array_merge(request()->except('tab'), ['tab' => 'monitor'])) }}"
-       class="px-4 py-2 -mb-px border-b-2 font-semibold {{ $tab === 'monitor' ? 'border-csu-700 text-csu-800' : 'border-transparent text-gray-500 hover:text-csu-700' }}">
-        Monitoring Resources
-    </a>
-</div>
-
-@if ($tab === 'generate')
 {{-- ============================================================
      SUBSECTION 1: GENERATE REPORTS (the report generator)
      ============================================================ --}}
@@ -34,7 +17,6 @@
 
     {{-- Report criteria --}}
     <form class="no-print bg-white rounded-lg border p-4 mb-6 space-y-3 text-sm">
-        <input type="hidden" name="tab" value="generate">
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <label class="block">
                 <span class="block font-medium mb-1">College</span>
@@ -97,13 +79,39 @@
         <h3 class="font-semibold mb-3">Collection Summary by Program</h3>
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
-                <thead class="text-left text-gray-500"><tr><th class="py-2">College</th><th>Program</th><th>Subjects</th><th>Resources</th><th>Outdated</th><th>Views</th><th>Subjects Lacking Resources</th></tr></thead>
+                <thead class="text-left text-gray-500"><tr><th class="py-2">College</th><th>Program</th><th>Courses</th><th>Resources</th><th>Outdated</th><th>Courses Lacking Resources</th></tr></thead>
                 <tbody>
                 @forelse ($programs as $p)
                     <tr class="border-t">
                         <td class="py-2">{{ $p['college'] }}</td><td>{{ $p['program'] }}</td><td>{{ $p['subjects'] }}</td>
-                        <td>{{ $p['resources'] }}</td><td>{{ $p['outdated'] }}</td><td>{{ $p['views'] }}</td>
+                        <td>{{ $p['resources'] }}</td><td>{{ $p['outdated'] }}</td>
+                        {{-- How many courses in this program have fewer than 5 resources (the minimum is per course, not per program) --}}
                         <td class="{{ $p['insufficient'] ? 'text-red-600 font-semibold' : 'text-green-700' }}">{{ $p['insufficient'] ?: 'None' }}</td>
+                    </tr>
+                @empty
+                    <tr><td colspan="6" class="py-3 text-gray-500">No data for the selected criteria.</td></tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {{-- Report 2: by course --}}
+    <div class="bg-white rounded-lg border p-5 mb-6">
+        <h3 class="font-semibold mb-1">Resource Adequacy by Course</h3>
+        <p class="text-xs text-gray-500 mb-3">
+            Every course needs at least <strong>{{ \App\Models\Subject::MIN_RESOURCES }}</strong> resources
+        </p>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="text-left text-gray-500"><tr><th class="py-2">College</th><th>Program</th><th>Course</th><th>Resources</th><th>Up-to-date</th><th>Outdated</th><th>Status</th></tr></thead>
+                <tbody>
+                @forelse ($subjects as $s)
+                    <tr class="border-t">
+                        <td class="py-2">{{ $s['college'] }}</td><td>{{ $s['program'] }}</td>
+                        <td><a href="{{ route('browse.subject', $s['id']) }}" class="hover:underline">{{ $s['subject'] }}</a></td>
+                        <td>{{ $s['resources'] }}</td><td>{{ $s['current'] }}</td><td>{{ $s['outdated'] }}</td>
+                        <td><span class="text-xs px-2 py-0.5 rounded whitespace-nowrap {{ $statusColors[$s['status']] }}">{{ $s['status'] }}</span></td>
                     </tr>
                 @empty
                     <tr><td colspan="7" class="py-3 text-gray-500">No data for the selected criteria.</td></tr>
@@ -113,106 +121,7 @@
         </div>
     </div>
 
-    {{-- Report 2: by subject --}}
-    <div class="bg-white rounded-lg border p-5 mb-6">
-        <h3 class="font-semibold mb-1">Resource Adequacy by Subject</h3>
-        <p class="text-xs text-gray-500 mb-3">
-            <strong>Sufficient</strong>: meets the target with up-to-date resources ·
-            <strong>Needs Update</strong>: has enough resources but too many are older than {{ \App\Models\Resource::OUTDATED_AFTER_YEARS }} years ·
-            <strong>Insufficient</strong>: fewer resources than the target.
-        </p>
-        <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-                <thead class="text-left text-gray-500"><tr><th class="py-2">College</th><th>Program</th><th>Subject</th><th>Target</th><th>Resources</th><th>Up-to-date</th><th>Outdated</th><th>Views</th><th>Status</th></tr></thead>
-                <tbody>
-                @forelse ($subjects as $s)
-                    <tr class="border-t">
-                        <td class="py-2">{{ $s['college'] }}</td><td>{{ $s['program'] }}</td>
-                        <td><a href="{{ route('browse.subject', $s['id']) }}" class="hover:underline">{{ $s['subject'] }}</a></td>
-                        <td>{{ $s['target'] }}</td><td>{{ $s['resources'] }}</td><td>{{ $s['current'] }}</td><td>{{ $s['outdated'] }}</td><td>{{ $s['views'] }}</td>
-                        <td><span class="text-xs px-2 py-0.5 rounded whitespace-nowrap {{ $statusColors[$s['status']] }}">{{ $s['status'] }}</span></td>
-                    </tr>
-                @empty
-                    <tr><td colspan="9" class="py-3 text-gray-500">No data for the selected criteria.</td></tr>
-                @endforelse
-                </tbody>
-            </table>
-        </div>
-    </div>
-
     <p class="text-xs text-gray-400">Generated {{ now()->format('F d, Y h:i A') }} by {{ auth()->user()->name }} · CSU Digital Library Repository</p>
 </section>
 
-@else
-{{-- ============================================================
-     SUBSECTION 2: MONITORING RESOURCES (live overview)
-     ============================================================ --}}
-<section>
-    <h2 class="text-lg font-semibold mb-1">Monitoring Resources</h2>
-    <p class="text-sm text-gray-500 mb-4">Current status of the repository. Usage figures cover {{ $f['from']->format('M d, Y') }} – {{ $f['to']->format('M d, Y') }}.</p>
-
-    {{-- Summary numbers --}}
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-        @foreach ([
-            ['Resources', $summary['resources']], ['Outdated', $summary['outdated']], ['Subjects', $summary['subjects']],
-            ['Insufficient Subjects', $summary['insufficient']], ['Subjects Needing Update', $summary['needs_update']],
-            ['Views', $summary['views']], ['Unique Readers', $summary['readers']], ['Searches', $summary['searches']],
-        ] as [$label, $value])
-            <div class="bg-white rounded-lg border p-3">
-                <p class="text-xs text-gray-500">{{ $label }}</p>
-                <p class="text-2xl font-bold">{{ number_format($value) }}</p>
-            </div>
-        @endforeach
-    </div>
-
-    <div class="grid lg:grid-cols-3 gap-6 mb-6">
-        {{-- Monthly views bar chart --}}
-        <div class="bg-white rounded-lg border p-5 lg:col-span-2">
-            <h3 class="font-semibold mb-4">Repository Usage per Month</h3>
-            @php $max = max(1, $monthly->max('total')); @endphp
-            <div class="flex items-end gap-2 h-48">
-                @foreach ($monthly as $m)
-                    <div class="flex-1 flex flex-col items-center justify-end h-full">
-                        <span class="text-xs text-gray-600 mb-1">{{ $m['total'] }}</span>
-                        <div class="w-full bg-csu-600 rounded-t" style="height: {{ max(2, $m['total'] / $max * 100) }}%"></div>
-                        <span class="text-[10px] text-gray-500 mt-1 whitespace-nowrap">{{ $m['label'] }}</span>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg border p-5">
-            <h3 class="font-semibold mb-3">Usage by Role</h3>
-            <p class="text-xs text-gray-500 -mt-2 mb-2">Click a role to see who opened which resources.</p>
-            @foreach (['student' => 'Students', 'faculty' => 'Faculty', 'librarian' => 'Librarians'] as $role => $label)
-                <a href="{{ route('librarian.access-logs.index', array_merge(request()->except(['tab', 'page']), ['role' => $role])) }}"
-                   class="flex justify-between border-t py-2 text-sm hover:bg-csu-50 hover:text-csu-800 -mx-2 px-2 rounded">
-                    <span>{{ $label }} <span class="text-csu-700">›</span></span><span class="font-semibold">{{ $byRole[$role] ?? 0 }}</span>
-                </a>
-            @endforeach
-            <a href="{{ route('librarian.access-logs.index', request()->except(['tab', 'page'])) }}" class="block text-xs text-csu-700 hover:underline mt-2">View all access logs ›</a>
-
-            <h3 class="font-semibold mt-5 mb-3">Faculty Recommendations</h3>
-            @foreach (\App\Models\Recommendation::STATUS_LABELS as $status => $label)
-                <a href="{{ route('librarian.reviews.index', ['status' => $status]) }}"
-                   class="flex justify-between border-t py-2 text-sm hover:bg-csu-50 hover:text-csu-800 -mx-2 px-2 rounded">
-                    <span>{{ $label }} <span class="text-csu-700">›</span></span><span class="font-semibold">{{ $recommendations[$status] ?? 0 }}</span>
-                </a>
-            @endforeach
-        </div>
-    </div>
-
-    {{-- Most viewed --}}
-    <div class="bg-white rounded-lg border p-5">
-        <h3 class="font-semibold mb-3">Most Viewed Resources</h3>
-        <ol class="text-sm space-y-2 list-decimal ml-5">
-            @forelse ($topResources as $r)
-                <li><span class="font-medium">{{ $r->title }}</span> <span class="text-gray-500">({{ $r->subject->code }}) – {{ $r->access_logs_count }} views</span></li>
-            @empty
-                <li class="text-gray-500 list-none -ml-5">No usage in this period.</li>
-            @endforelse
-        </ol>
-    </div>
-</section>
-@endif
 @endsection

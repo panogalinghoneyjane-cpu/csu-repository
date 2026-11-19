@@ -15,12 +15,23 @@
         <a href="{{ route('faculty.recommendations.create') }}" class="bg-csu-700 text-white px-4 py-2 rounded text-sm hover:bg-csu-800">+ Recommend a Resource</a>
     @endif
 </div>
+<form class="flex flex-wrap items-center justify-between gap-2 mb-4 text-sm">
+    <p class="text-gray-500">{{ $resources->total() }} {{ Str::plural('resource', $resources->total()) }}</p>
+    <label class="flex items-center gap-2">
+        <span class="text-gray-600">Sort by</span>
+        <select name="sort" onchange="this.form.submit()" class="border rounded px-3 py-1.5 bg-white">
+            @foreach ($sorts as $value => [$label])
+                <option value="{{ $value }}" @selected($sort === $value)>{{ $label }}</option>
+            @endforeach
+        </select>
+    </label>
+</form>
 
 <div class="grid md:grid-cols-2 gap-4">
     @forelse ($resources as $resource)
         @include('partials.resource-card', ['resource' => $resource])
     @empty
-        <p class="text-gray-500">No resources for this subject yet.</p>
+        <p class="text-gray-500">No resources for this course yet.</p>
     @endforelse
 </div>
 <div class="mt-6">{{ $resources->links() }}</div>

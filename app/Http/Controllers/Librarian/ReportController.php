@@ -34,7 +34,7 @@ class ReportController extends Controller
             'resources' => (clone $resourceBase)->count(),
             'outdated' => (clone $resourceBase)->outdated()->count(),
             'subjects' => $subjects->count(),
-            'insufficient' => $subjects->where('status', 'Insufficient')->count(),
+            'insufficient' => $subjects->where('status', 'Lacking Resources')->count(),
             'needs_update' => $subjects->where('status', 'Needs Update')->count(),
             'views' => (clone $usageBase)->count(),
             'readers' => (clone $usageBase)->distinct('user_id')->count('user_id'),
@@ -52,8 +52,7 @@ class ReportController extends Controller
                 'resources' => $rows->sum('resources'),
                 'outdated' => $rows->sum('outdated'),
                 'views' => $rows->sum('views'),
-                'insufficient' => $rows->where('status', 'Insufficient')->count(),
-            ])->values(),
+                'insufficient' => $rows->where('status', 'Lacking Resources')->count(),            ])->values(),
             'topResources' => (clone $resourceBase)->with('subject')
                 ->withCount(['accessLogs' => fn ($q) => $q->whereBetween('accessed_at', [$f['from'], $f['to']])])
                 ->orderByDesc('access_logs_count')->take(10)->get(),
@@ -69,6 +68,35 @@ class ReportController extends Controller
         ]);
     }
 
+        /** Monitoring numbers shown on the librarian Dashboard. */
+    public function monitoringData(Request $request): array
+    {
+        $f = $this->filters($request);
+        $subjects = $this->subjectRows($f);
+        $resourceBase = $this->resourceQuery($f);
+        $usageBase = AccessLog::whereBetween('accessed_at', [$f['from'], $f['to']])
+            ->whereIn('resource_id', (clone $resourceBase)->select('id'));
+
+        return [
+            'f' => $f,
+            'subjects' => $subjects,
+            'summary' => [
+                'resources' => (clone $resourceBase)->count(),
+                'outdated' => (clone $resourceBase)->outdated()->count(),
+                'subjects' => $subjects->count(),
+                'insufficient' => $subjects->where('status', 'Lacking Resources')->count(),
+            ],
+            'monthly' => $this->monthlyViews($f),
+            'byRole' => (clone $usageBase)->join('users', 'users.id', '=', 'access_logs.user_id')
+                ->selectRaw('users.role, count(*) as total')->groupBy('users.role')->pluck('total', 'role'),
+            'recommendations' => Recommendation::whereBetween('created_at', [$f['from'], $f['to']])
+                ->selectRaw('status, count(*) as total')->groupBy('status')->pluck('total', 'status'),
+            'topResources' => (clone $resourceBase)->with('subject')
+                ->withCount(['accessLogs' => fn ($q) => $q->whereBetween('accessed_at', [$f['from'], $f['to']])])
+                ->orderByDesc('access_logs_count')->take(10)->get(),
+        ];
+    }
+    
     /** Download the subject adequacy report as a CSV file (opens in Excel). */
     public function export(Request $request): StreamedResponse
     {
@@ -81,7 +109,7 @@ class ReportController extends Controller
             fputcsv($out, ['CSU Digital Library Repository - Resource Adequacy Report']);
             fputcsv($out, ['Usage period', $f['from']->toDateString().' to '.$f['to']->toDateString()]);
             fputcsv($out, []);
-            fputcsv($out, ['College', 'Program', 'Subject', 'Target', 'Resources', 'Up-to-date', 'Outdated', 'Views', 'Status']);
+            fputcsv($out, ['College', 'Program', 'Course', 'Target', 'Resources', 'Up-to-date', 'Outdated', 'Views', 'Status']);
             foreach ($rows as $r) {
                 fputcsv($out, [$r['college'], $r['program'], $r['subject'], $r['target'], $r['resources'],
                     $r['current'], $r['outdated'], $r['views'], $r['status']]);
@@ -151,9 +179,10 @@ class ReportController extends Controller
             ->get()
             ->map(function (Subject $s) {
                 $current = $s->total_count - $s->outdated_count;
+                $min = Subject::MIN_RESOURCES;   // the same minimum (5) for every course
                 $status = match (true) {
-                    $current < $s->min_resources && $s->total_count < $s->min_resources => 'Insufficient',
-                    $current < $s->min_resources => 'Needs Update',
+                    $current < $min && $s->total_count < $min => 'Lacking Resources',
+                    $current < $min => 'Needs Update',
                     default => 'Sufficient',
                 };
 
@@ -162,7 +191,7 @@ class ReportController extends Controller
                     'college' => $s->program->college->code,
                     'program' => $s->program->code,
                     'subject' => $s->label,
-                    'target' => $s->min_resources,
+                    'target' => $min,
                     'resources' => $s->total_count,
                     'current' => $current,
                     'outdated' => $s->outdated_count,

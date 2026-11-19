@@ -15,16 +15,23 @@ use Illuminate\Validation\Rule;
  */
 class RecommendationController extends Controller
 {
-    public function index(Request $request)
+            public function index(Request $request)
     {
+        // Optional filter from the dashboard boxes / tabs, e.g. ?status=needs_revision
+        $status = array_key_exists($request->query('status'), Recommendation::STATUS_LABELS)
+            ? $request->query('status') : null;
+
         $recommendations = $request->user()->recommendations()
             ->with(['subject.program', 'resource'])
+            ->when($status, fn ($q) => $status === 'pending'
+                ? $q->whereIn('status', ['pending', 'needs_revision'])   // Pending tab also shows Returned for Revision
+                : $q->where('status', $status))
             ->latest()
-            ->paginate(15);
+            ->paginate(15)
+            ->withQueryString();
 
-        return view('faculty.recommendations.index', compact('recommendations'));
-    }
-
+        return view('faculty.recommendations.index', compact('recommendations', 'status'));
+    }   
     public function create()
     {
         return view('faculty.recommendations.form', [
@@ -65,11 +72,31 @@ class RecommendationController extends Controller
         $data = $this->validated($request);
         $data['status'] = 'pending'; // resubmitted -> back to the librarian's queue
 
+                 // A returned recommendation needs a comment about what was revised
+        $request->validate([
+            'revision_note' => [$recommendation->status === 'needs_revision' ? 'required' : 'nullable', 'string', 'max:1000'],
+        ], [
+            'revision_note.required' => 'Please write a comment about what you revised.',
+        ]);
+        $recommendation->revisionNote = $request->revision_note;
+
         $recommendation->update($data);
 
         return redirect()->route('faculty.recommendations.index')
             ->with('success', 'Recommendation updated and resubmitted for review.');
     }
+
+        /** Faculty deletes their own recommendation (only if not yet approved or added). */
+    public function destroy(Request $request, Recommendation $recommendation)
+    {
+        abort_unless($recommendation->faculty_id === $request->user()->id, 403, 'You can only delete your own recommendations.');
+        abort_unless(in_array($recommendation->status, ['pending', 'needs_revision', 'rejected']), 403,
+            'Approved recommendations and resources already added cannot be deleted.');
+
+        $recommendation->delete();
+
+        return redirect()->route('faculty.recommendations.index')->with('success', 'Recommendation deleted.');
+    } 
 
     private function validated(Request $request): array
     {

@@ -17,9 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         // Not logged in -> go to login page. Already logged in -> go to dashboard.
-        $middleware->redirectGuestsTo('/login');
+               $middleware->redirectGuestsTo('/login');
         $middleware->redirectUsersTo('/dashboard');
-           $middleware->trustProxies(at: '*');
+        $middleware->trustProxies(at: '*');   // links work through the Cloudflare https tunnel
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

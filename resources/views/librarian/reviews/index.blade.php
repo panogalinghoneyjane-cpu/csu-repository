@@ -4,11 +4,22 @@
 @section('content')
 <h1 class="text-2xl font-bold mb-4">Faculty Resource Recommendations</h1>
 
+@php
+    // Each tab has the same color as its status label. [normal, selected]
+    $tabColors = [
+        'all'            => ['bg-white text-csu-800 border-csu-700',          'bg-csu-700 text-white border-csu-700'],
+        'pending'        => ['bg-yellow-100 text-yellow-800 border-yellow-300', 'bg-yellow-500 text-white border-yellow-500'],
+        'approved'       => ['bg-blue-100 text-blue-800 border-blue-300',       'bg-blue-600 text-white border-blue-600'],
+        'needs_revision' => ['bg-orange-100 text-orange-800 border-orange-300', 'bg-orange-500 text-white border-orange-500'],
+        'rejected'       => ['bg-red-100 text-red-800 border-red-300',          'bg-red-600 text-white border-red-600'],
+        'fulfilled'      => ['bg-green-100 text-green-800 border-green-300',    'bg-green-600 text-white border-green-600'],
+    ];
+@endphp
 <div class="flex flex-wrap gap-2 mb-4 text-sm">
-    @foreach (['pending' => 'Pending', 'approved' => 'Approved – To Upload', 'needs_revision' => 'Returned', 'rejected' => 'Rejected', 'fulfilled' => 'Added', 'all' => 'All'] as $key => $label)
+    @foreach (['all' => 'All', 'pending' => 'Pending', 'approved' => 'For Purchase', 'needs_revision' => 'Returned', 'rejected' => 'Rejected', 'fulfilled' => 'Added to Repository'] as $key => $label)
         <a href="{{ route('librarian.reviews.index', ['status' => $key]) }}"
-           class="px-3 py-1.5 rounded-full border {{ $status === $key ? 'bg-csu-700 text-white border-csu-700' : 'bg-white hover:bg-gray-50' }}">
-            {{ $label }}{{ $key !== 'all' ? ' ('.($counts[$key] ?? 0).')' : '' }}
+           class="px-3 py-1.5 rounded-full border font-medium hover:shadow-sm {{ $tabColors[$key][$status === $key ? 1 : 0] }}">
+            {{ $label }} ({{ $key === 'all' ? $counts->sum() : ($counts[$key] ?? 0) }})
         </a>
     @endforeach
 </div>

@@ -6,8 +6,7 @@
     $roleLabels = ['student' => 'Students', 'faculty' => 'Faculty', 'librarian' => 'Librarians'];
 @endphp
 
-<a href="{{ route('librarian.reports.index', array_merge(request()->except(['role', 'q', 'page']), ['tab' => 'monitor'])) }}"
-   class="text-sm text-gray-500 hover:underline">‹ Back to Monitoring Resources</a>
+<a href="{{ route('dashboard') }}" class="text-sm text-gray-500 hover:underline">‹ Back to Dashboard</a>
 
 <h1 class="text-2xl font-bold mt-2 mb-1">Access Logs{{ $role ? ' – '.$roleLabels[$role] : '' }}</h1>
 <p class="text-sm text-gray-500 mb-4">
@@ -40,7 +39,7 @@
 <div class="bg-white rounded-lg border overflow-x-auto">
     <table class="w-full text-sm">
         <thead class="bg-gray-50 text-left text-gray-600">
-            <tr><th class="px-4 py-3">Date & Time</th><th>User</th><th>ID Number</th><th>Role</th><th>Resource Opened</th><th class="pr-4">Subject</th></tr>
+            <tr><th class="px-4 py-3">Date & Time</th><th>User</th><th>ID Number</th><th>Role</th><th>Resource Opened</th><th class="pr-4">Course</th></tr>
         </thead>
         <tbody>
         @forelse ($logs as $log)

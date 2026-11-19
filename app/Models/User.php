@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name', 'id_number', 'email', 'role', 'college_id', 'is_active', 'password'];
+    protected $fillable = ['name', 'id_number', 'email', 'role', 'college_id', 'program_id', 'is_active', 'password'];
 
     protected $hidden = ['password', 'remember_token'];
 
@@ -28,9 +28,31 @@ class User extends Authenticatable
         return $this->belongsTo(College::class);
     }
 
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
+
     public function recommendations()
     {
         return $this->hasMany(Recommendation::class, 'faculty_id');
+    }
+
+    /** Classes this faculty member teaches */
+    public function taughtClasses()
+    {
+        return $this->hasMany(CourseClass::class, 'faculty_id');
+    }
+
+    /** Classes this student saved to My Classes */
+    public function savedClasses()
+    {
+        return $this->belongsToMany(CourseClass::class, 'course_class_student')->withTimestamps();
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
     }
 
     public function isLibrarian(): bool

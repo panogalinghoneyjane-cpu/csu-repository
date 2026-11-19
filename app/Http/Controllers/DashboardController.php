@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Librarian\ReportController;
+use App\Models\Subject;
 use App\Models\AccessLog;
 use App\Models\College;
 use App\Models\Recommendation;
@@ -16,6 +18,7 @@ class DashboardController extends Controller
         $user = $request->user();
 
         return match ($user->role) {
+            'admin' => redirect()->route('admin.users.index'),
             'librarian' => $this->librarian(),
             'faculty' => $this->faculty($user),
             default => $this->student($user),
@@ -24,23 +27,17 @@ class DashboardController extends Controller
 
     private function librarian()
     {
-        return view('dashboard.librarian', [
-            'stats' => [
-                'resources' => Resource::active()->count(),
-                'pending' => Recommendation::where('status', 'pending')->count(),
-                'to_upload' => Recommendation::where('status', 'approved')->count(),
-                'outdated' => Resource::active()->outdated()->count(),
-                'views_month' => AccessLog::where('accessed_at', '>=', now()->startOfMonth())->count(),
-                'no_result_searches' => SearchLog::where('results_count', 0)
-                    ->where('searched_at', '>=', now()->subDays(30))->count(),
-            ],
-            'pending' => Recommendation::with(['faculty', 'subject.program'])
-                ->where('status', 'pending')->latest()->take(5)->get(),
-            'recent' => Resource::with('subject.program')->latest()->take(5)->get(),
-            'activity' => AccessLog::with(['user', 'resource'])->latest('accessed_at')->take(8)->get(),
-        ]);
+        return view('dashboard.librarian', array_merge(
+            app(ReportController::class)->monitoringData(request()),
+            [
+                'recent' => Resource::with('subject.program')->latest()->take(5)->get(),
+                'pendingList' => Recommendation::with(['faculty', 'subject.program.college'])
+                    ->where('status', 'pending')->latest()->get(),
+                'outdatedList' => Resource::active()->outdated()
+                    ->with('subject.program.college')->orderBy('publication_year')->get(),
+            ]
+        ));
     }
-
     private function faculty($user)
     {
         return view('dashboard.faculty', [
@@ -51,6 +48,7 @@ class DashboardController extends Controller
             'updates' => $user->recommendations()->with('subject')
                 ->whereNotNull('reviewed_at')->latest('reviewed_at')->take(5)->get(),
             'recent' => Resource::active()->with('subject.program')->latest()->take(6)->get(),
+                        'myRecommendations' => $user->recommendations()->with('subject.program.college', 'resource')->latest()->get(),
         ]);
     }
 
@@ -63,7 +61,7 @@ class DashboardController extends Controller
 
         return view('dashboard.student', [
             'colleges' => College::withCount('programs')->orderBy('code')->get(),
-            'popular' => $collegeQuery->orderByDesc('access_logs_count')->take(6)->get(),
+            'popular' => app(\App\Services\PersonalRecommender::class)->forUser($user),
             'recentlyViewed' => Resource::whereIn('id',
                 AccessLog::where('user_id', $user->id)->latest('accessed_at')->take(20)->pluck('resource_id')
             )->with('subject')->take(5)->get(),

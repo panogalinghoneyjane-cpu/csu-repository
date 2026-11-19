@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
+    /** Every course needs at least this many resources; fewer = "Lacking Resources" in reports. Set by the system, not the librarian. */
+    public const MIN_RESOURCES = 5;
+
     protected $fillable = ['program_id', 'code', 'name', 'year_level', 'min_resources'];
 
     public function program()

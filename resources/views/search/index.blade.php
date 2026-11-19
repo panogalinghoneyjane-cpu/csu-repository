@@ -4,41 +4,34 @@
 @section('content')
 <h1 class="text-2xl font-bold mb-4">Search the Repository</h1>
 
-<form action="{{ route('search') }}" method="GET" class="bg-white rounded-lg border p-4 mb-6 space-y-3">
-    <div class="flex gap-2">
-        <input type="text" name="q" value="{{ $q }}" placeholder="Search by title, author, keyword, or subject..." autofocus
-               class="flex-1 border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-csu-600">
-        <button class="bg-csu-700 text-white px-5 rounded-lg hover:bg-csu-800">Search</button>
-    </div>
-    <div class="grid sm:grid-cols-3 gap-3 text-sm">
-        <select name="college" class="border rounded px-3 py-2">
-            <option value="">All colleges</option>
-            @foreach ($colleges as $c)
-                <option value="{{ $c->id }}" @selected(($filters['college'] ?? '') == $c->id)>{{ $c->code }}</option>
-            @endforeach
-        </select>
-        <select name="type" class="border rounded px-3 py-2">
-            <option value="">All resource types</option>
-            @foreach ($types as $t)
-                <option @selected(($filters['type'] ?? '') === $t)>{{ $t }}</option>
-            @endforeach
-        </select>
-        <select name="year" class="border rounded px-3 py-2">
-            <option value="">Any publication year</option>
-            @foreach ([1, 3, 5, 10] as $n)
-                <option value="{{ now()->year - $n }}" @selected(($filters['year'] ?? '') == now()->year - $n)>Last {{ $n }} year{{ $n > 1 ? 's' : '' }}</option>
-            @endforeach
-        </select>
-    </div>
-</form>
+<div class="mb-6">@include('partials.search-bar', ['withFilters' => true])</div>
 
 @if ($q !== '')
     <div class="grid lg:grid-cols-3 gap-6">
         <section class="lg:col-span-2">
-            <h2 class="font-semibold mb-3">{{ $results->count() }} result{{ $results->count() === 1 ? '' : 's' }} for “{{ $q }}”</h2>
+            <h2 class="font-semibold mb-1">{{ $results->count() }} result{{ $results->count() === 1 ? '' : 's' }} for “{{ $q }}”</h2>
+            <p class="text-xs text-gray-500 mb-3">Searched titles, authors, keywords, descriptions, links, and the text inside every PDF. Matching courses are listed first.</p>
+                       @if ($courses->isNotEmpty())
+                <div class="bg-white rounded-lg border p-4 mb-4">
+                    <p class="text-sm font-semibold mb-2">Matching courses</p>
+                    <div class="divide-y">
+                        @foreach ($courses as $course)
+                            <a href="{{ route('browse.subject', $course) }}" class="flex items-center justify-between gap-3 py-2 hover:bg-gray-50 -mx-2 px-2 rounded">
+                                <span>
+                                    <span class="font-medium text-csu-700">{{ \App\Models\Resource::highlight($course->code.' – '.$course->name, $q) }}</span>
+                                    <span class="block text-xs text-gray-500">{{ $course->program->college->code }} › {{ $course->program->code }}</span>
+                                </span>
+                                <span class="text-xs whitespace-nowrap {{ $course->active_resources_count ? 'text-gray-600' : 'text-red-600' }}">
+                                    {{ $course->active_resources_count ?: 'No' }} resource{{ $course->active_resources_count == 1 ? '' : 's' }} yet
+                                </span>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
             <div class="space-y-3">
                 @forelse ($results as $resource)
-                    @include('partials.resource-card', ['resource' => $resource])
+                    @include('partials.resource-card', ['resource' => $resource, 'snippet' => $resource->contentSnippet($q), 'term' => $q])
                 @empty
                     <div class="bg-white rounded-lg border p-6 text-center text-gray-600">
                         <p class="font-medium">No resources matched your search.</p>
@@ -54,7 +47,7 @@
         <aside>
             <div class="bg-csu-50 border border-csu-100 rounded-lg p-4 lg:sticky lg:top-4">
                 <h2 class="font-semibold text-csu-800 mb-1">Recommended Resources</h2>
-                <p class="text-xs text-gray-600 mb-3">Related materials based on your keywords, subject classification, and what other readers opened.</p>
+                <p class="text-xs text-gray-600 mb-3">Related materials based on your keywords, course classification, and what other readers opened.</p>
                 <div class="space-y-3">
                     @forelse ($related as $resource)
                         @include('partials.resource-card', ['resource' => $resource, 'reason' => $resource->recommend_reason])

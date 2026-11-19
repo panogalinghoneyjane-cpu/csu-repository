@@ -2,9 +2,7 @@
 @section('title', 'Review Recommendation')
 
 @section('content')
-<a href="{{ route('librarian.reviews.index') }}" class="text-sm text-gray-500 hover:underline">‹ Back to recommendations</a>
-
-<div class="grid lg:grid-cols-3 gap-6 mt-3">
+<div class="grid lg:grid-cols-3 gap-6 items-start">
     <section class="lg:col-span-2 bg-white rounded-lg border p-6">
         <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
             <h1 class="text-xl font-bold">{{ $recommendation->title }}</h1>
@@ -32,6 +30,17 @@
             @endif
         </dl>
 
+        @php
+            $revisionNote = $recommendation->histories()->where('action', 'resubmitted')
+                ->whereNotNull('remarks')->latest('id')->value('remarks');
+        @endphp
+        @if ($recommendation->status === 'pending' && $revisionNote)
+            <div class="mt-5 rounded-lg border border-orange-200 bg-orange-50 px-4 py-3 text-sm">
+                <p class="font-semibold text-orange-800">Faculty's revision comment</p>
+                <p class="text-gray-800 whitespace-pre-line mt-1">{{ $revisionNote }}</p>
+            </div>
+        @endif
+
         @if ($similar->isNotEmpty())
             <div class="mt-6 rounded border border-yellow-200 bg-yellow-50 p-4 text-sm">
                 <p class="font-semibold text-yellow-800 mb-2">Possibly already in the repository:</p>
@@ -44,12 +53,14 @@
         @endif
     </section>
 
-    <aside class="bg-white rounded-lg border p-6 h-fit">
+    {{-- Right side: Decision box, then History below it --}}
+    <aside class="space-y-6">
+     <div class="bg-white rounded-lg border p-6">
         @if (in_array($recommendation->status, ['pending', 'needs_revision']))
             <h2 class="font-semibold mb-3">Decision</h2>
             <form method="POST" action="{{ route('librarian.reviews.decide', $recommendation) }}" class="space-y-3">
                 @csrf
-                <label class="flex items-center gap-2"><input type="radio" name="decision" value="approved" required> Approve (then upload)</label>
+                <label class="flex items-center gap-2"><input type="radio" name="decision" value="approved" required> Approve for purchase</label>
                 <label class="flex items-center gap-2"><input type="radio" name="decision" value="needs_revision"> Return for revision</label>
                 <label class="flex items-center gap-2"><input type="radio" name="decision" value="rejected"> Reject</label>
                 <textarea name="librarian_remarks" rows="4" class="w-full border rounded px-3 py-2 text-sm"
@@ -57,14 +68,19 @@
                 <button class="w-full bg-csu-700 text-white py-2 rounded hover:bg-csu-800">Save Decision</button>
             </form>
         @elseif ($recommendation->status === 'approved')
-            <p class="text-sm mb-3">This recommendation is approved. Upload the acquired file to add it to the repository.</p>
-            <a href="{{ route('librarian.resources.create', ['recommendation' => $recommendation->id]) }}" class="block text-center bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Upload Resource</a>
+            <h2 class="font-semibold mb-2">For Purchase</h2>
+            <p class="text-sm text-gray-600 mb-3">Approved for purchase. Once the library has bought it, upload it to add it to the repository.</p>
+            <a href="{{ route('librarian.resources.create', ['recommendation' => $recommendation->id]) }}" class="block text-center bg-csu-700 text-white py-2 rounded hover:bg-csu-800">Add to the Repository</a>
         @elseif ($recommendation->status === 'fulfilled' && $recommendation->resource)
-            <p class="text-sm mb-3">Added to the repository.</p>
+            <h2 class="font-semibold mb-2">Added to the Repository</h2>
+            <p class="text-sm text-gray-600 mb-3">This book was bought and is now in the repository.</p>
             <a href="{{ route('reader.show', $recommendation->resource) }}" class="block text-center border py-2 rounded hover:bg-gray-50">Open Resource</a>
         @else
             <p class="text-sm text-gray-600">This recommendation was rejected.</p>
         @endif
+    </div>
+
+    @include('partials.recommendation-history', ['class' => 'bg-white rounded-lg border p-6 max-h-[70vh] overflow-y-auto'])
     </aside>
 </div>
 @endsection

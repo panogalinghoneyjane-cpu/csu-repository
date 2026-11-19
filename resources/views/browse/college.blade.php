@@ -10,7 +10,7 @@
         <a href="{{ route('browse.program', $program) }}" class="bg-white rounded-lg border p-5 hover:border-csu-600 hover:shadow">
             <p class="text-lg font-bold text-csu-800">{{ $program->code }}</p>
             <p class="text-sm text-gray-600">{{ $program->name }}</p>
-            <p class="text-xs text-gray-400 mt-2">{{ $program->subjects_count }} subjects</p>
+            <p class="text-xs text-gray-400 mt-2">{{ $program->subjects_count }} courses</p>
         </a>
     @empty
         <p class="text-gray-500">No programs yet.</p>

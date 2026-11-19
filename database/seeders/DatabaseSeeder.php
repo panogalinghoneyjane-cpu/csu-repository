@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\AccessLog;
 use App\Models\College;
+use App\Models\CourseClass;
 use App\Models\Recommendation;
 use App\Models\Resource;
 use App\Models\SearchLog;
@@ -70,7 +71,7 @@ class DatabaseSeeder extends Seeder
             foreach ($programs as [$pCode, $pName, $subjects]) {
                 $program = $college->programs()->create(['code' => $pCode, 'name' => $pName]);
                 foreach ($subjects as [$sCode, $sName, $year]) {
-                    $program->subjects()->create(['code' => $sCode, 'name' => $sName, 'year_level' => $year, 'min_resources' => 3]);
+                    $program->subjects()->create(['code' => $sCode, 'name' => $sName, 'year_level' => $year, 'min_resources' => 5]);
                 }
             }
         }
@@ -148,6 +149,12 @@ class DatabaseSeeder extends Seeder
             ]));
         }
 
+        // Full-text search: read the text inside the sample PDFs
+        $extractor = app(\App\Services\PdfTextExtractor::class);
+        foreach ($created as $resource) {
+            $resource->update(['content_text' => $extractor->extract(Storage::disk('local')->path($resource->file_path))]);
+        }
+
         // ---------------------------------------------------------------
         // 5. Usage history (views + searches over the last 6 months)
         // ---------------------------------------------------------------
@@ -168,6 +175,24 @@ class DatabaseSeeder extends Seeder
                     'searched_at' => now()->subDays(rand(0, 150))]);
             }
         }
+
+        // ---------------------------------------------------------------
+        // 5b. A demo class in My Classes (faculty shares it, Ana saved it)
+        // ---------------------------------------------------------------
+        $demoClass = CourseClass::create([
+            'faculty_id' => $faculty->id,
+            'subject_id' => Subject::where('code', 'IT 213')->value('id'),
+            'section' => 'BSIT 2-A',
+            'school_year' => '2026-2027',
+            'semester' => '1st Semester',
+            'description' => 'Review these materials before each lesson. Read the Laravel book before our midterm project.',
+        ]);
+        $demoClass->resources()->attach([
+            $created->firstWhere('title', 'Modern Web Development with Laravel')->id => ['note' => 'Required: Chapters 1-4 before the midterm.'],
+            $created->firstWhere('title', 'Responsive Design Patterns')->id => ['note' => null],
+            $created->firstWhere('title', 'Building Secure Web Applications')->id => ['note' => 'Optional reading for the security lesson.'],
+        ]);
+        $demoClass->students()->attach([$student->id]);
 
         // ---------------------------------------------------------------
         // 6. Faculty recommendations in different workflow states

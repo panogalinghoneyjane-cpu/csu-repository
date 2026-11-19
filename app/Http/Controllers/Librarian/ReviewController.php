@@ -12,7 +12,7 @@ class ReviewController extends Controller
 {
     public function index(Request $request)
     {
-        $status = $request->query('status', 'pending');
+        $status = $request->query('status', 'all');
 
         $recommendations = Recommendation::with(['faculty', 'subject.program.college'])
             ->when($status !== 'all', fn ($q) => $q->where('status', $status))

@@ -18,7 +18,7 @@
         <select id="ss-program" class="w-full border rounded px-3 py-2"></select>
     </div>
     <div>
-        <label class="block text-sm font-medium mb-1">Subject <span class="text-red-600">*</span></label>
+        <label class="block text-sm font-medium mb-1">Course <span class="text-red-600">*</span></label>
         <select id="ss-subject" name="subject_id" required class="w-full border rounded px-3 py-2"></select>
     </div>
 </div>
