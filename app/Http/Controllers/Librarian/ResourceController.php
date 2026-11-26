@@ -19,7 +19,7 @@ class ResourceController extends Controller
     {
         $resources = Resource::with('subject.program.college')
             ->withCount('accessLogs')
-            ->when($request->q, fn ($q, $term) => $q->search($term))
+            ->when($request->q, fn ($q, $term) => $this->searchTitleAuthorYear($q, $term))
             ->when($request->college, fn ($q, $c) => $q->whereHas('subject.program', fn ($p) => $p->where('college_id', $c)))
             ->when($request->status, fn ($q, $s) => $q->where('status', $s))
             ->when($request->subject, fn ($q, $s) => $q->where('subject_id', $s))
@@ -32,6 +32,24 @@ class ResourceController extends Controller
             'resources' => $resources,
             'colleges' => College::orderBy('code')->get(),
         ]);
+    }
+
+    /**
+     * Manage Resources search: only the title, author(s) and publication year.
+     * Every word must be in the title or authors; a 4-digit year (e.g. 2023) matches that publication year only.
+     */
+    private function searchTitleAuthorYear($query, string $term)
+    {
+        [$words, $years] = Resource::splitSearch($term);
+
+        if ($years) {
+            $query->whereIn('publication_year', $years);
+        }
+        foreach ($words as $word) {
+            $query->where(fn ($w) => $w->whereLike('title', '%'.$word.'%')->orWhereLike('authors', '%'.$word.'%'));
+        }
+
+        return $query;
     }
 
     public function create(Request $request)
@@ -140,7 +158,7 @@ class ResourceController extends Controller
             'recommendation_id' => ['nullable', 'exists:recommendations,id'],
             'title' => ['required', 'string', 'max:255'],
             'authors' => ['required', 'string', 'max:255'],
-            'publication_year' => ['required', 'integer', 'min:1900', 'max:'.(now()->year + 1)],
+            'publication_year' => ['required', 'integer', 'min:1900', 'max:'.now()->year],   // not later than this year
             'resource_type' => ['required', Rule::in(Resource::TYPES)],
             'academic_year' => ['nullable', 'string', 'max:20'],
             'description' => ['nullable', 'string', 'max:3000'],
@@ -149,6 +167,7 @@ class ResourceController extends Controller
             'external_url' => ['nullable', 'required_if:source_type,link', 'url:http,https', 'max:500'],
         ], [
             'file.required' => 'Please choose a PDF file to upload.',
+            'publication_year.max' => 'The publication year cannot be later than '.now()->year.'.',
             'external_url.required_if' => 'Please enter the link (URL) of the online resource.',
             'external_url.url' => 'Please enter a valid link that starts with http:// or https://.',
         ]);

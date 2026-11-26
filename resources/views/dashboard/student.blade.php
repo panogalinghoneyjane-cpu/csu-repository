@@ -14,7 +14,7 @@
         <div class="px-5 pt-4 pb-2">
             <h2 class="text-lg font-semibold">Recommended for You</h2>
         </div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 px-5 pb-5 pt-2 [&>a]:h-full">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4 px-5 pb-5 pt-2">
             @forelse ($popular as $resource)
                 @include('partials.resource-card', ['resource' => $resource])
             @empty

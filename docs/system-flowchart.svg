@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1940" viewBox="0 0 1800 1940" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+  <path d="M0,0 L12,6 L0,12 Z" fill="#000"/></marker></defs>
+<rect width="1800" height="1940" fill="#fff"/>
+<ellipse cx="900" cy="55" rx="85.0" ry="28.0" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="61.0" font-size="17" text-anchor="middle" font-weight="bold">Start</text>
+<polygon points="756.0,115.0 1096.0,115.0 1044.0,185.0 704.0,185.0" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="145.4" font-size="17" text-anchor="middle">Enter ID Number or Email</text>
+<text x="900" y="166.4" font-size="17" text-anchor="middle">and Password</text>
+<rect x="750.0" y="215.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="255.9" font-size="17" text-anchor="middle">Validate Credentials</text>
+<polygon points="900,300.0 1025.0,370 900,440.0 775.0,370" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="355.6" font-size="16" text-anchor="middle">Valid Credentials</text>
+<text x="900" y="375.6" font-size="16" text-anchor="middle">and Active</text>
+<text x="900" y="395.6" font-size="16" text-anchor="middle">Account?</text>
+<rect x="1195.0" y="335.0" width="270" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1330" y="375.9" font-size="17" text-anchor="middle">Display Error Message</text>
+<polygon points="900,475.0 1010.0,525 900,575.0 790.0,525" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="530.6" font-size="16" text-anchor="middle">User Role?</text>
+<polyline points="900.0,83.0 900.0,115.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,185.0 900.0,215.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,285.0 900.0,300.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="1025.0,370.0 1195.0,370.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1037.0" y="360.0" font-size="16" font-weight="bold" text-anchor="start">No</text>
+<polyline points="1330.0,335.0 1330.0,150.0 1100.0,150.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,440.0 900.0,475.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="910.0" y="464.0" font-size="16" font-weight="bold" text-anchor="start">Yes</text>
+<polyline points="790.0,525.0 330.0,525.0 330.0,610.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="680.0" y="515.0" font-size="16" font-weight="bold" text-anchor="start">Faculty</text>
+<polyline points="900.0,575.0 900.0,610.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="910.0" y="597.0" font-size="16" font-weight="bold" text-anchor="start">Librarian</text>
+<polyline points="1010.0,525.0 1530.0,525.0 1530.0,610.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1050.0" y="515.0" font-size="16" font-weight="bold" text-anchor="start">Student</text>
+<rect x="180.0" y="610.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="330" y="651.0" font-size="17" text-anchor="middle">Faculty Dashboard</text>
+<rect x="180.0" y="715.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="330" y="745.5" font-size="17" text-anchor="middle">Browse / Search and Read</text>
+<text x="330" y="766.5" font-size="17" text-anchor="middle">Resources (View-Only)</text>
+<rect x="180.0" y="820.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="330" y="850.5" font-size="17" text-anchor="middle">Create Class, Add Resources</text>
+<text x="330" y="871.5" font-size="17" text-anchor="middle">and Share Class Link / Code</text>
+<rect x="180.0" y="925.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="330" y="955.5" font-size="17" text-anchor="middle">Enter Resource</text>
+<text x="330" y="976.5" font-size="17" text-anchor="middle">Recommendation Details</text>
+<rect x="180.0" y="1035.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="330" y="1065.5" font-size="17" text-anchor="middle">Submit Recommendation</text>
+<text x="330" y="1086.5" font-size="17" text-anchor="middle">(Status: Pending)</text>
+<rect x="180.0" y="1165.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="330" y="1195.5" font-size="17" text-anchor="middle">Revise and Resubmit</text>
+<text x="330" y="1216.5" font-size="17" text-anchor="middle">Recommendation</text>
+<polyline points="330.0,680.0 330.0,715.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="330.0,785.0 330.0,820.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="330.0,890.0 330.0,925.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="330.0,995.0 330.0,1035.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="330.0,1165.0 330.0,1105.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="750.0" y="610.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="651.0" font-size="17" text-anchor="middle">Librarian Dashboard</text>
+<rect x="750.0" y="715.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="745.5" font-size="17" text-anchor="middle">Manage Classifications</text>
+<text x="900" y="766.5" font-size="17" text-anchor="middle">and Announcements</text>
+<polygon points="900,820.0 1020.0,880 900,940.0 780.0,880" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="875.6" font-size="16" text-anchor="middle">Pending</text>
+<text x="900" y="895.6" font-size="16" text-anchor="middle">Recommendation?</text>
+<rect x="750.0" y="1035.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1076.0" font-size="17" text-anchor="middle">Review Recommendation</text>
+<polygon points="900,1140.0 1010.0,1200 900,1260.0 790.0,1200" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1195.6" font-size="16" text-anchor="middle">Librarian</text>
+<text x="900" y="1215.6" font-size="16" text-anchor="middle">Decision?</text>
+<rect x="750.0" y="1310.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1340.5" font-size="17" text-anchor="middle">Acquire Resource</text>
+<text x="900" y="1361.5" font-size="17" text-anchor="middle">(Status: For Purchase)</text>
+<rect x="750.0" y="1420.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1450.5" font-size="17" text-anchor="middle">Upload Resource</text>
+<text x="900" y="1471.5" font-size="17" text-anchor="middle">(PDF or Online Link) and Details</text>
+<rect x="750.0" y="1525.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1555.5" font-size="17" text-anchor="middle">Classify Resource</text>
+<text x="900" y="1576.5" font-size="17" text-anchor="middle">(College, Program, Course)</text>
+<rect x="750.0" y="1630.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1660.5" font-size="17" text-anchor="middle">Store in Repository and</text>
+<text x="900" y="1681.5" font-size="17" text-anchor="middle">Read PDF Text for Search</text>
+<rect x="750.0" y="1735.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1765.5" font-size="17" text-anchor="middle">Monitor Resource Adequacy</text>
+<text x="900" y="1786.5" font-size="17" text-anchor="middle">and Usage, Generate Reports</text>
+<ellipse cx="900" cy="1885" rx="85.0" ry="28.0" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="900" y="1891.0" font-size="17" text-anchor="middle" font-weight="bold">End</text>
+<polyline points="900.0,680.0 900.0,715.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,785.0 900.0,820.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,940.0 900.0,1035.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="910.0" y="974.0" font-size="16" font-weight="bold" text-anchor="start">Yes</text>
+<polyline points="480.0,1070.0 750.0,1070.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,1105.0 900.0,1140.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="790.0,1200.0 480.0,1200.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="770.0" y="1188.0" font-size="16" font-weight="bold" text-anchor="end">Return for Revision</text>
+<polyline points="900.0,1260.0 900.0,1310.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="910.0" y="1288.0" font-size="16" font-weight="bold" text-anchor="start">Approve</text>
+<polyline points="900.0,1380.0 900.0,1420.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="1020.0,880.0 1330.0,880.0 1330.0,1455.0 1050.0,1455.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1032.0" y="870.0" font-size="16" font-weight="bold" text-anchor="start">No</text>
+<polyline points="900.0,1490.0 900.0,1525.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,1595.0 900.0,1630.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,1700.0 900.0,1735.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="900.0,1805.0 900.0,1857.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1090.0" y="1165.0" width="200" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1190" y="1195.5" font-size="17" text-anchor="middle">Status: Rejected</text>
+<text x="1190" y="1216.5" font-size="17" text-anchor="middle">(with Remarks)</text>
+<polyline points="1010.0,1200.0 1090.0,1200.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1018.0" y="1190.0" font-size="16" font-weight="bold" text-anchor="start">Reject</text>
+<ellipse cx="1190" cy="1300" rx="65.0" ry="24.0" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1190" y="1306.0" font-size="17" text-anchor="middle" font-weight="bold">End</text>
+<polyline points="1190.0,1235.0 1190.0,1276.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1380.0" y="610.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1530" y="651.0" font-size="17" text-anchor="middle">Student Dashboard</text>
+<polygon points="1530,715.0 1650.0,775 1530,835.0 1410.0,775" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1530" y="770.6" font-size="16" text-anchor="middle">Has Class Link</text>
+<text x="1530" y="790.6" font-size="16" text-anchor="middle">or Code?</text>
+<rect x="1380.0" y="875.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1530" y="905.5" font-size="17" text-anchor="middle">Join Class and View</text>
+<text x="1530" y="926.5" font-size="17" text-anchor="middle">Class Resources</text>
+<rect x="1380.0" y="995.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1530" y="1025.5" font-size="17" text-anchor="middle">Browse / Search Repository</text>
+<text x="1530" y="1046.5" font-size="17" text-anchor="middle">(Keyword, Filters, Voice)</text>
+<polygon points="1530,1105.0 1630.0,1165 1530,1225.0 1430.0,1165" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1530" y="1160.6" font-size="16" text-anchor="middle">Resource</text>
+<text x="1530" y="1180.6" font-size="16" text-anchor="middle">Found?</text>
+<rect x="1380.0" y="1265.0" width="300" height="70" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<text x="1530" y="1295.5" font-size="17" text-anchor="middle">Read Resource</text>
+<text x="1530" y="1316.5" font-size="17" text-anchor="middle">(View-Only, Access Recorded)</text>
+<polyline points="1530.0,680.0 1530.0,715.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="1530.0,835.0 1530.0,875.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1540.0" y="869.0" font-size="16" font-weight="bold" text-anchor="start">Yes</text>
+<polyline points="1650.0,775.0 1730.0,775.0 1730.0,1030.0 1680.0,1030.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1660.0" y="765.0" font-size="16" font-weight="bold" text-anchor="start">No</text>
+<polyline points="1530.0,945.0 1530.0,995.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="1530.0,1065.0 1530.0,1105.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polyline points="1430.0,1165.0 1365.0,1165.0 1365.0,1030.0 1380.0,1030.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1390.0" y="1155.0" font-size="16" font-weight="bold" text-anchor="start">No</text>
+<polyline points="1530.0,1225.0 1530.0,1265.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1540.0" y="1259.0" font-size="16" font-weight="bold" text-anchor="start">Yes</text>
+<polyline points="1530.0,1335.0 1530.0,1885.0 985.0,1885.0" fill="none" stroke="#000" stroke-width="1.6" marker-end="url(#arrow)"/>
+</svg>

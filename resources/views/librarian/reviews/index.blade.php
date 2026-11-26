@@ -26,16 +26,17 @@
 
 <div class="space-y-3">
     @forelse ($recommendations as $rec)
-        <div class="bg-white rounded-lg border p-4 flex flex-wrap items-start justify-between gap-3">
-            <div class="min-w-0">
-                <p class="font-semibold">{{ $rec->title }}</p>
+        {{-- Same layout for every card: details on the left, status + buttons always on the right (a long title wraps instead of pushing them down) --}}
+        <div class="bg-white rounded-lg border p-4 flex items-start justify-between gap-3">
+            <div class="flex-1 min-w-0">
+                <p class="font-semibold break-words">{{ $rec->title }}</p>
                 <p class="text-sm text-gray-600">{{ $rec->authors }}{{ $rec->publication_year ? ' · '.$rec->publication_year : '' }} · {{ $rec->resource_type }}</p>
                 <p class="text-xs text-gray-500 mt-1">
                     {{ $rec->subject->program->college->code }} › {{ $rec->subject->program->code }} › {{ $rec->subject->label }}
                     · Recommended by {{ $rec->faculty->name }} · {{ $rec->created_at->diffForHumans() }}
                 </p>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="shrink-0 flex items-center gap-2">
                 <span class="text-xs px-2 py-1 rounded {{ $rec->statusColor() }}">{{ $rec->statusLabel() }}</span>
                 @if ($rec->status === 'approved')
                     <a href="{{ route('librarian.resources.create', ['recommendation' => $rec->id]) }}" class="text-sm bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700">Upload</a>

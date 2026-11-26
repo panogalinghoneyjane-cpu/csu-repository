@@ -1,0 +1,411 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="1700" viewBox="0 0 1350 1700" font-family="Arial, Helvetica, sans-serif">
+<rect width="1350" height="1700" fill="#fff"/>
+<polyline points="330.0,97.6 480.0,101.4" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(330.0,97.6) rotate(-178.6)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(480.0,101.4) rotate(1.4)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><line x1="-22" y1="-9" x2="-22" y2="9"/></g>
+<rect x="377.2" y="88.5" width="55.6" height="20" fill="#fff" opacity="0.92"/>
+<text x="405.0" y="103.5" font-size="14" font-style="italic" text-anchor="middle">offers</text>
+<polyline points="211.0,148.0 260.0,250.0 410.0,250.0 410.0,870.0 480.0,892.8" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(211.0,148.0) rotate(-115.7)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><circle cx="-20" cy="0" r="5"/></g>
+<g transform="translate(480.0,892.8) rotate(18.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="367.0" y="549.0" width="86.0" height="20" fill="#fff" opacity="0.92"/>
+<text x="410.0" y="564.0" font-size="14" font-style="italic" text-anchor="middle">belongs to</text>
+<polyline points="770.0,112.2 920.0,119.8" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(770.0,112.2) rotate(-177.1)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(920.0,119.8) rotate(2.9)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><line x1="-22" y1="-9" x2="-22" y2="9"/></g>
+<rect x="828.6" y="105.0" width="32.8" height="20" fill="#fff" opacity="0.92"/>
+<text x="845.0" y="120.0" font-size="14" font-style="italic" text-anchor="middle">has</text>
+<polyline points="670.7,170.0 720.0,240.0 845.0,240.0 845.0,870.0 770.0,893.9" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(670.7,170.0) rotate(-125.1)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><circle cx="-20" cy="0" r="5"/></g>
+<g transform="translate(770.0,893.9) rotate(162.3)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="798.2" y="544.0" width="93.6" height="20" fill="#fff" opacity="0.92"/>
+<text x="845.0" y="559.0" font-size="14" font-style="italic" text-anchor="middle">enrolled in</text>
+<polyline points="1210.0,127.0 1260.0,127.0 1260.0,1100.0 1210.0,1112.8" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(1210.0,127.0) rotate(180.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(1210.0,1112.8) rotate(165.6)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="1217.0" y="602.5" width="86.0" height="20" fill="#fff" opacity="0.92"/>
+<text x="1260.0" y="617.5" font-size="14" font-style="italic" text-anchor="middle">classifies</text>
+<polyline points="952.1,214.0 770.0,354.3" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(952.1,214.0) rotate(-37.6)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(770.0,354.3) rotate(142.4)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="844.6" y="273.1" width="32.8" height="20" fill="#fff" opacity="0.92"/>
+<text x="861.0" y="288.1" font-size="14" font-style="italic" text-anchor="middle">for</text>
+<polyline points="1065.0,214.0 1065.0,320.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(1065.0,214.0) rotate(-90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(1065.0,320.0) rotate(90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="1025.8" y="256.0" width="78.4" height="20" fill="#fff" opacity="0.92"/>
+<text x="1065.0" y="271.0" font-size="14" font-style="italic" text-anchor="middle">taught as</text>
+<polyline points="770.0,1009.2 920.0,1080.8" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(770.0,1009.2) rotate(-154.5)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><circle cx="-20" cy="0" r="5"/></g>
+<g transform="translate(920.0,1080.8) rotate(25.5)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="813.4" y="1034.0" width="63.2" height="20" fill="#fff" opacity="0.92"/>
+<text x="845.0" y="1049.0" font-size="14" font-style="italic" text-anchor="middle">uploads</text>
+<polyline points="611.0,820.0 611.0,652.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(611.0,820.0) rotate(90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(611.0,652.0) rotate(-90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="519.0" y="725.0" width="86.0" height="20" fill="#fff" opacity="0.92"/>
+<text x="562.0" y="740.0" font-size="14" font-style="italic" text-anchor="middle">recommends</text>
+<polyline points="639.0,820.0 639.0,652.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(639.0,820.0) rotate(90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><circle cx="-20" cy="0" r="5"/></g>
+<g transform="translate(639.0,652.0) rotate(-90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="645.0" y="725.0" width="63.2" height="20" fill="#fff" opacity="0.92"/>
+<text x="676.6" y="740.0" font-size="14" font-style="italic" text-anchor="middle">reviews</text>
+<polyline points="480.0,969.0 330.0,999.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(480.0,969.0) rotate(-11.3)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><circle cx="-20" cy="0" r="5"/></g>
+<g transform="translate(330.0,999.0) rotate(168.7)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="373.4" y="973.0" width="63.2" height="20" fill="#fff" opacity="0.92"/>
+<text x="405.0" y="988.0" font-size="14" font-style="italic" text-anchor="middle">acts in</text>
+<polyline points="480.0,651.2 261.7,930.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(480.0,651.2) rotate(-51.9)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(261.7,930.0) rotate(128.1)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><line x1="-22" y1="-9" x2="-22" y2="9"/></g>
+<rect x="354.5" y="779.6" width="32.8" height="20" fill="#fff" opacity="0.92"/>
+<text x="370.9" y="794.6" font-size="14" font-style="italic" text-anchor="middle">has</text>
+<polyline points="744.6,652.0 920.0,924.6" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(744.6,652.0) rotate(-122.8)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><circle cx="-20" cy="0" r="5"/></g>
+<g transform="translate(920.0,924.6) rotate(57.2)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="781.7" y="777.3" width="101.2" height="20" fill="#fff" opacity="0.92"/>
+<text x="832.3" y="792.3" font-size="14" font-style="italic" text-anchor="middle">fulfilled by</text>
+<polyline points="730.6,820.0 959.4,560.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(730.6,820.0) rotate(131.3)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(959.4,560.0) rotate(-48.7)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="813.4" y="679.0" width="63.2" height="20" fill="#fff" opacity="0.92"/>
+<text x="845.0" y="694.0" font-size="14" font-style="italic" text-anchor="middle">teaches</text>
+<polyline points="1065.0,560.0 1065.0,680.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(1065.0,560.0) rotate(-90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(1065.0,680.0) rotate(90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="1048.6" y="609.0" width="32.8" height="20" fill="#fff" opacity="0.92"/>
+<text x="1065.0" y="624.0" font-size="14" font-style="italic" text-anchor="middle">has</text>
+<polyline points="770.0,875.7 920.0,809.3" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(770.0,875.7) rotate(156.1)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(920.0,809.3) rotate(-23.9)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="821.0" y="831.5" width="48.0" height="20" fill="#fff" opacity="0.92"/>
+<text x="845.0" y="846.5" font-size="14" font-style="italic" text-anchor="middle">joins</text>
+<polyline points="1210.0,440.0 1300.0,440.0 1300.0,1585.0 1210.0,1585.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(1210.0,440.0) rotate(180.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(1210.0,1585.0) rotate(180.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="1264.6" y="1001.5" width="70.8" height="20" fill="#fff" opacity="0.92"/>
+<text x="1300.0" y="1016.5" font-size="14" font-style="italic" text-anchor="middle">includes</text>
+<polyline points="1065.0,1380.0 1065.0,1520.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(1065.0,1380.0) rotate(-90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(1065.0,1520.0) rotate(90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="1029.6" y="1439.0" width="70.8" height="20" fill="#fff" opacity="0.92"/>
+<text x="1065.0" y="1454.0" font-size="14" font-style="italic" text-anchor="middle">added to</text>
+<polyline points="625.0,1060.0 625.0,1200.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(625.0,1060.0) rotate(-90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(625.0,1200.0) rotate(90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="601.0" y="1119.0" width="48.0" height="20" fill="#fff" opacity="0.92"/>
+<text x="625.0" y="1134.0" font-size="14" font-style="italic" text-anchor="middle">opens</text>
+<polyline points="920.0,1187.9 770.0,1227.1" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(920.0,1187.9) rotate(-14.6)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(770.0,1227.1) rotate(165.4)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="805.8" y="1196.5" width="78.4" height="20" fill="#fff" opacity="0.92"/>
+<text x="845.0" y="1211.5" font-size="14" font-style="italic" text-anchor="middle">viewed in</text>
+<polyline points="484.6,1060.0 273.9,1240.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(484.6,1060.0) rotate(-40.5)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(273.9,1240.0) rotate(139.5)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="343.9" y="1139.0" width="70.8" height="20" fill="#fff" opacity="0.92"/>
+<text x="379.3" y="1154.0" font-size="14" font-style="italic" text-anchor="middle">searches</text>
+<polyline points="519.4,820.0 290.6,560.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(519.4,820.0) rotate(48.7)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><circle cx="-20" cy="0" r="5"/></g>
+<g transform="translate(290.6,560.0) rotate(-131.3)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="381.0" y="679.0" width="48.0" height="20" fill="#fff" opacity="0.92"/>
+<text x="405.0" y="694.0" font-size="14" font-style="italic" text-anchor="middle">posts</text>
+<polyline points="185.0,560.0 185.0,680.0" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(185.0,560.0) rotate(-90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(185.0,680.0) rotate(90.0)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="153.4" y="609.0" width="63.2" height="20" fill="#fff" opacity="0.92"/>
+<text x="185.0" y="624.0" font-size="14" font-style="italic" text-anchor="middle">read in</text>
+<polyline points="480.0,875.7 330.0,809.3" fill="none" stroke="#000" stroke-width="1.5"/>
+<g transform="translate(480.0,875.7) rotate(23.9)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-9" y1="-9" x2="-9" y2="9"/><line x1="-16" y1="-9" x2="-16" y2="9"/></g>
+<g transform="translate(330.0,809.3) rotate(-156.1)" stroke="#000" stroke-width="1.6" fill="#fff"><line x1="-16" y1="0" x2="0" y2="-9"/><line x1="-16" y1="0" x2="0" y2="9"/><line x1="-16" y1="0" x2="0" y2="0"/><circle cx="-24" cy="0" r="5"/></g>
+<rect x="381.0" y="831.5" width="48.0" height="20" fill="#fff" opacity="0.92"/>
+<text x="405.0" y="846.5" font-size="14" font-style="italic" text-anchor="middle">reads</text>
+<rect x="40" y="40" width="290" height="108" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="40" y="40" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="185.0" y="63" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">colleges</text>
+<text x="50" y="92" font-size="12" font-weight="bold">PK</text>
+<text x="82" y="92" font-size="14" font-weight="bold">id</text>
+<text x="320" y="92" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="50" y="114" font-size="12" font-weight="bold">UQ</text>
+<text x="82" y="114" font-size="14">code</text>
+<text x="320" y="114" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="82" y="136" font-size="14">name</text>
+<text x="320" y="136" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<rect x="480" y="40" width="290" height="130" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="480" y="40" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="625.0" y="63" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">programs</text>
+<text x="490" y="92" font-size="12" font-weight="bold">PK</text>
+<text x="522" y="92" font-size="14" font-weight="bold">id</text>
+<text x="760" y="92" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="490" y="114" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="114" font-size="14" font-style="italic">college_id</text>
+<text x="760" y="114" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="522" y="136" font-size="14">code</text>
+<text x="760" y="136" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="158" font-size="14">name</text>
+<text x="760" y="158" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<rect x="920" y="40" width="290" height="174" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="920" y="40" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="1065.0" y="63" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">subjects</text>
+<text x="930" y="92" font-size="12" font-weight="bold">PK</text>
+<text x="962" y="92" font-size="14" font-weight="bold">id</text>
+<text x="1200" y="92" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="114" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="114" font-size="14" font-style="italic">program_id</text>
+<text x="1200" y="114" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="962" y="136" font-size="14">code</text>
+<text x="1200" y="136" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="158" font-size="14">name</text>
+<text x="1200" y="158" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="180" font-size="14">year_level</text>
+<text x="1200" y="180" font-size="12" fill="#555" text-anchor="end">tinyint</text>
+<text x="962" y="202" font-size="14">min_resources</text>
+<text x="1200" y="202" font-size="12" fill="#555" text-anchor="end">int</text>
+<rect x="480" y="820" width="290" height="240" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="480" y="820" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="625.0" y="843" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">users</text>
+<text x="490" y="872" font-size="12" font-weight="bold">PK</text>
+<text x="522" y="872" font-size="14" font-weight="bold">id</text>
+<text x="760" y="872" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="522" y="894" font-size="14">name</text>
+<text x="760" y="894" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="490" y="916" font-size="12" font-weight="bold">UQ</text>
+<text x="522" y="916" font-size="14">id_number</text>
+<text x="760" y="916" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="490" y="938" font-size="12" font-weight="bold">UQ</text>
+<text x="522" y="938" font-size="14">email</text>
+<text x="760" y="938" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="960" font-size="14">password</text>
+<text x="760" y="960" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="982" font-size="14">role</text>
+<text x="760" y="982" font-size="12" fill="#555" text-anchor="end">enum</text>
+<text x="490" y="1004" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="1004" font-size="14" font-style="italic">college_id</text>
+<text x="760" y="1004" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="490" y="1026" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="1026" font-size="14" font-style="italic">program_id</text>
+<text x="760" y="1026" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="522" y="1048" font-size="14">is_active</text>
+<text x="760" y="1048" font-size="12" fill="#555" text-anchor="end">boolean</text>
+<rect x="920" y="920" width="290" height="460" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="920" y="920" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="1065.0" y="943" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">resources</text>
+<text x="930" y="972" font-size="12" font-weight="bold">PK</text>
+<text x="962" y="972" font-size="14" font-weight="bold">id</text>
+<text x="1200" y="972" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="994" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="994" font-size="14" font-style="italic">subject_id</text>
+<text x="1200" y="994" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="1016" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="1016" font-size="14" font-style="italic">uploaded_by</text>
+<text x="1200" y="1016" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="1038" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="1038" font-size="14" font-style="italic">recommendation_id</text>
+<text x="1200" y="1038" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="962" y="1060" font-size="14">title</text>
+<text x="1200" y="1060" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1082" font-size="14">authors</text>
+<text x="1200" y="1082" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1104" font-size="14">publication_year</text>
+<text x="1200" y="1104" font-size="12" fill="#555" text-anchor="end">smallint</text>
+<text x="962" y="1126" font-size="14">resource_type</text>
+<text x="1200" y="1126" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1148" font-size="14">academic_year</text>
+<text x="1200" y="1148" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1170" font-size="14">description</text>
+<text x="1200" y="1170" font-size="12" fill="#555" text-anchor="end">text</text>
+<text x="962" y="1192" font-size="14">keywords</text>
+<text x="1200" y="1192" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1214" font-size="14">file_path</text>
+<text x="1200" y="1214" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1236" font-size="14">external_url</text>
+<text x="1200" y="1236" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1258" font-size="14">content_text</text>
+<text x="1200" y="1258" font-size="12" fill="#555" text-anchor="end">longtext</text>
+<text x="962" y="1280" font-size="14">page_count</text>
+<text x="1200" y="1280" font-size="12" fill="#555" text-anchor="end">int</text>
+<text x="962" y="1302" font-size="14">status</text>
+<text x="1200" y="1302" font-size="12" fill="#555" text-anchor="end">enum</text>
+<text x="962" y="1324" font-size="14">has_physical_copy</text>
+<text x="1200" y="1324" font-size="12" fill="#555" text-anchor="end">boolean</text>
+<text x="962" y="1346" font-size="14">call_number</text>
+<text x="1200" y="1346" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="1368" font-size="14">shelf_location</text>
+<text x="1200" y="1368" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<rect x="480" y="280" width="290" height="372" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="480" y="280" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="625.0" y="303" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">recommendations</text>
+<text x="490" y="332" font-size="12" font-weight="bold">PK</text>
+<text x="522" y="332" font-size="14" font-weight="bold">id</text>
+<text x="760" y="332" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="490" y="354" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="354" font-size="14" font-style="italic">faculty_id</text>
+<text x="760" y="354" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="490" y="376" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="376" font-size="14" font-style="italic">subject_id</text>
+<text x="760" y="376" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="490" y="398" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="398" font-size="14" font-style="italic">reviewed_by</text>
+<text x="760" y="398" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="522" y="420" font-size="14">title</text>
+<text x="760" y="420" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="442" font-size="14">authors</text>
+<text x="760" y="442" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="464" font-size="14">publisher</text>
+<text x="760" y="464" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="486" font-size="14">edition</text>
+<text x="760" y="486" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="508" font-size="14">publication_year</text>
+<text x="760" y="508" font-size="12" fill="#555" text-anchor="end">smallint</text>
+<text x="522" y="530" font-size="14">resource_type</text>
+<text x="760" y="530" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="552" font-size="14">source_link</text>
+<text x="760" y="552" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="522" y="574" font-size="14">reason</text>
+<text x="760" y="574" font-size="12" fill="#555" text-anchor="end">text</text>
+<text x="522" y="596" font-size="14">status</text>
+<text x="760" y="596" font-size="12" fill="#555" text-anchor="end">enum</text>
+<text x="522" y="618" font-size="14">librarian_remarks</text>
+<text x="760" y="618" font-size="12" fill="#555" text-anchor="end">text</text>
+<text x="522" y="640" font-size="14">reviewed_at</text>
+<text x="760" y="640" font-size="12" fill="#555" text-anchor="end">timestamp</text>
+<rect x="40" y="930" width="290" height="196" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="40" y="930" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="185.0" y="953" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">recommendation_histories</text>
+<text x="50" y="982" font-size="12" font-weight="bold">PK</text>
+<text x="82" y="982" font-size="14" font-weight="bold">id</text>
+<text x="320" y="982" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="50" y="1004" font-size="12" font-weight="bold">FK</text>
+<text x="82" y="1004" font-size="14" font-style="italic">recommendation_id</text>
+<text x="320" y="1004" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="50" y="1026" font-size="12" font-weight="bold">FK</text>
+<text x="82" y="1026" font-size="14" font-style="italic">user_id</text>
+<text x="320" y="1026" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="82" y="1048" font-size="14">action</text>
+<text x="320" y="1048" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="82" y="1070" font-size="14">remarks</text>
+<text x="320" y="1070" font-size="12" fill="#555" text-anchor="end">text</text>
+<text x="82" y="1092" font-size="14">details</text>
+<text x="320" y="1092" font-size="12" fill="#555" text-anchor="end">json</text>
+<text x="82" y="1114" font-size="14">created_at</text>
+<text x="320" y="1114" font-size="12" fill="#555" text-anchor="end">timestamp</text>
+<rect x="920" y="320" width="290" height="240" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="920" y="320" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="1065.0" y="343" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">course_classes</text>
+<text x="930" y="372" font-size="12" font-weight="bold">PK</text>
+<text x="962" y="372" font-size="14" font-weight="bold">id</text>
+<text x="1200" y="372" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="394" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="394" font-size="14" font-style="italic">faculty_id</text>
+<text x="1200" y="394" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="416" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="416" font-size="14" font-style="italic">subject_id</text>
+<text x="1200" y="416" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="962" y="438" font-size="14">section</text>
+<text x="1200" y="438" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="460" font-size="14">school_year</text>
+<text x="1200" y="460" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="482" font-size="14">semester</text>
+<text x="1200" y="482" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="504" font-size="14">description</text>
+<text x="1200" y="504" font-size="12" fill="#555" text-anchor="end">text</text>
+<text x="930" y="526" font-size="12" font-weight="bold">UQ</text>
+<text x="962" y="526" font-size="14">code</text>
+<text x="1200" y="526" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="962" y="548" font-size="14">is_open</text>
+<text x="1200" y="548" font-size="12" fill="#555" text-anchor="end">boolean</text>
+<rect x="920" y="680" width="290" height="130" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="920" y="680" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="1065.0" y="703" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">course_class_student</text>
+<text x="930" y="732" font-size="12" font-weight="bold">PK</text>
+<text x="962" y="732" font-size="14" font-weight="bold">id</text>
+<text x="1200" y="732" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="754" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="754" font-size="14" font-style="italic">course_class_id</text>
+<text x="1200" y="754" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="776" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="776" font-size="14" font-style="italic">user_id</text>
+<text x="1200" y="776" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="962" y="798" font-size="14">created_at</text>
+<text x="1200" y="798" font-size="12" fill="#555" text-anchor="end">timestamp</text>
+<rect x="920" y="1520" width="290" height="130" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="920" y="1520" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="1065.0" y="1543" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">course_class_resource</text>
+<text x="930" y="1572" font-size="12" font-weight="bold">PK</text>
+<text x="962" y="1572" font-size="14" font-weight="bold">id</text>
+<text x="1200" y="1572" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="1594" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="1594" font-size="14" font-style="italic">course_class_id</text>
+<text x="1200" y="1594" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="930" y="1616" font-size="12" font-weight="bold">FK</text>
+<text x="962" y="1616" font-size="14" font-style="italic">resource_id</text>
+<text x="1200" y="1616" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="962" y="1638" font-size="14">note</text>
+<text x="1200" y="1638" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<rect x="480" y="1200" width="290" height="130" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="480" y="1200" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="625.0" y="1223" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">access_logs</text>
+<text x="490" y="1252" font-size="12" font-weight="bold">PK</text>
+<text x="522" y="1252" font-size="14" font-weight="bold">id</text>
+<text x="760" y="1252" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="490" y="1274" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="1274" font-size="14" font-style="italic">user_id</text>
+<text x="760" y="1274" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="490" y="1296" font-size="12" font-weight="bold">FK</text>
+<text x="522" y="1296" font-size="14" font-style="italic">resource_id</text>
+<text x="760" y="1296" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="522" y="1318" font-size="14">accessed_at</text>
+<text x="760" y="1318" font-size="12" fill="#555" text-anchor="end">timestamp</text>
+<rect x="40" y="1240" width="290" height="152" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="40" y="1240" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="185.0" y="1263" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">search_logs</text>
+<text x="50" y="1292" font-size="12" font-weight="bold">PK</text>
+<text x="82" y="1292" font-size="14" font-weight="bold">id</text>
+<text x="320" y="1292" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="50" y="1314" font-size="12" font-weight="bold">FK</text>
+<text x="82" y="1314" font-size="14" font-style="italic">user_id</text>
+<text x="320" y="1314" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="82" y="1336" font-size="14">keyword</text>
+<text x="320" y="1336" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="82" y="1358" font-size="14">results_count</text>
+<text x="320" y="1358" font-size="12" fill="#555" text-anchor="end">int</text>
+<text x="82" y="1380" font-size="14">searched_at</text>
+<text x="320" y="1380" font-size="12" fill="#555" text-anchor="end">timestamp</text>
+<rect x="40" y="320" width="290" height="240" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="40" y="320" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="185.0" y="343" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">announcements</text>
+<text x="50" y="372" font-size="12" font-weight="bold">PK</text>
+<text x="82" y="372" font-size="14" font-weight="bold">id</text>
+<text x="320" y="372" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="50" y="394" font-size="12" font-weight="bold">FK</text>
+<text x="82" y="394" font-size="14" font-style="italic">user_id</text>
+<text x="320" y="394" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="82" y="416" font-size="14">title</text>
+<text x="320" y="416" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="82" y="438" font-size="14">body</text>
+<text x="320" y="438" font-size="12" fill="#555" text-anchor="end">text</text>
+<text x="82" y="460" font-size="14">image_path</text>
+<text x="320" y="460" font-size="12" fill="#555" text-anchor="end">varchar</text>
+<text x="82" y="482" font-size="14">audience</text>
+<text x="320" y="482" font-size="12" fill="#555" text-anchor="end">enum</text>
+<text x="82" y="504" font-size="14">event_date</text>
+<text x="320" y="504" font-size="12" fill="#555" text-anchor="end">date</text>
+<text x="82" y="526" font-size="14">show_until</text>
+<text x="320" y="526" font-size="12" fill="#555" text-anchor="end">date</text>
+<text x="82" y="548" font-size="14">is_pinned</text>
+<text x="320" y="548" font-size="12" fill="#555" text-anchor="end">boolean</text>
+<rect x="40" y="680" width="290" height="130" fill="#fff" stroke="#000" stroke-width="1.8"/>
+<rect x="40" y="680" width="290" height="34" fill="#1f5c32" stroke="#000" stroke-width="1.8"/>
+<text x="185.0" y="703" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">announcement_reads</text>
+<text x="50" y="732" font-size="12" font-weight="bold">PK</text>
+<text x="82" y="732" font-size="14" font-weight="bold">id</text>
+<text x="320" y="732" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="50" y="754" font-size="12" font-weight="bold">FK</text>
+<text x="82" y="754" font-size="14" font-style="italic">announcement_id</text>
+<text x="320" y="754" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="50" y="776" font-size="12" font-weight="bold">FK</text>
+<text x="82" y="776" font-size="14" font-style="italic">user_id</text>
+<text x="320" y="776" font-size="12" fill="#555" text-anchor="end">bigint</text>
+<text x="82" y="798" font-size="14">read_at</text>
+<text x="320" y="798" font-size="12" fill="#555" text-anchor="end">timestamp</text>
+</svg>

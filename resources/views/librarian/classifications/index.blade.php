@@ -59,6 +59,8 @@
                     <span class="font-semibold">{{ $college->code }} – {{ $college->name }}</span>
                 </span>
                 <span class="flex items-center gap-4">
+                    <button type="button" class="text-xs text-csu-700 hover:underline"
+                            onclick="event.preventDefault(); event.stopPropagation(); openEdit('edit-college-{{ $college->id }}')">Edit</button>
                     {{-- Choosing a file uploads it right away --}}
                     <form method="POST" action="{{ route('librarian.classifications.logo', $college) }}" enctype="multipart/form-data">
                         @csrf
@@ -77,8 +79,12 @@
                     <div class="border rounded">
                         <div class="flex items-center justify-between bg-gray-50 px-4 py-2">
                             <span class="font-medium">{{ $program->code }} – {{ $program->name }}</span>
-                            <form method="POST" action="{{ route('librarian.classifications.destroy', ['program', $program->id]) }}" data-confirm="“{{ $program->code }}” and EVERYTHING inside it will be deleted: {{ $program->subjects->count() }} course(s) and {{ $program->subjects->sum('resources_count') }} resource(s) with their PDF files. This cannot be undone." data-confirm-title="Delete this program?" data-confirm-button="Delete" data-confirm-danger data-undo="Program deleted." data-undo-hide=".border.rounded">
-                            </form>
+                            <span class="flex items-center gap-4">
+                                <button type="button" class="text-xs text-csu-700 hover:underline" onclick="openEdit('edit-program-{{ $program->id }}')">Edit</button>
+                                <form method="POST" action="{{ route('librarian.classifications.destroy', ['program', $program->id]) }}" data-confirm="“{{ $program->code }}” and EVERYTHING inside it will be deleted: {{ $program->subjects->count() }} course(s) and {{ $program->subjects->sum('resources_count') }} resource(s) with their PDF files. This cannot be undone." data-confirm-title="Delete this program?" data-confirm-button="Delete" data-confirm-danger data-undo="Program deleted." data-undo-hide=".border.rounded">
+                                    @csrf @method('DELETE')<button class="text-xs text-red-600 hover:underline">Delete</button>
+                                </form>
+                            </span>
                         </div>
                                                <table class="w-full text-sm table-fixed">
                             <colgroup>
@@ -86,7 +92,7 @@
                                 <col>
                                 <col class="w-24">
                                 <col class="w-36">
-                                <col class="w-24">
+                                <col class="w-32">
                             </colgroup>
                             @forelse ($program->subjects as $subject)
                                 <tr class="border-t">
@@ -94,8 +100,9 @@
                                     <td class="px-4 py-2 truncate" title="{{ $subject->name }}">{{ $subject->name }}</td>
                                     <td class="px-4 py-2 text-gray-500">Year {{ $subject->year_level ?? '—' }}</td>
                                     <td class="px-4 py-2 text-gray-500">{{ $subject->resources_count }} / minimum {{ \App\Models\Subject::MIN_RESOURCES }}</td>
-                                    <td class="px-4 py-2 text-right">
-                                        <form method="POST" action="{{ route('librarian.classifications.destroy', ['subject', $subject->id]) }}" data-confirm="“{{ $subject->code }}” and its {{ $subject->resources_count }} resource(s) with their PDF files will be deleted. This cannot be undone." data-confirm-title="Delete this course?" data-confirm-button="Delete" data-confirm-danger data-undo="Course deleted." data-undo-hide="tr">
+                                    <td class="px-4 py-2 text-right whitespace-nowrap">
+                                        <button type="button" class="text-xs text-csu-700 hover:underline mr-3" onclick="openEdit('edit-subject-{{ $subject->id }}')">Edit</button>
+                                        <form class="inline" method="POST" action="{{ route('librarian.classifications.destroy', ['subject', $subject->id]) }}" data-confirm="“{{ $subject->code }}” and its {{ $subject->resources_count }} resource(s) with their PDF files will be deleted. This cannot be undone." data-confirm-title="Delete this course?" data-confirm-button="Delete" data-confirm-danger data-undo="Course deleted." data-undo-hide="tr">
                                             @csrf @method('DELETE')<button class="text-xs text-red-600 hover:underline">Delete</button>
                                         </form>
                                     </td>
@@ -112,4 +119,83 @@
         </details>
     @endforeach
 </div>
+
+{{-- ===== Edit popups (one per college, program and course), opened by the Edit buttons ===== --}}
+@php
+    $field = 'w-full border rounded px-3 py-2';
+    $label = 'block text-xs font-medium text-gray-600 mb-1';
+@endphp
+@foreach ($colleges as $college)
+    <div id="edit-college-{{ $college->id }}" class="edit-modal hidden fixed inset-0 z-[90] bg-black/40 flex items-center justify-center p-4" onclick="if (event.target === this) closeEdit(this.id)">
+        <form method="POST" action="{{ route('librarian.classifications.update', ['college', $college->id]) }}" enctype="multipart/form-data" class="bg-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-3 text-sm">
+            @csrf @method('PUT')
+            <h2 class="text-lg font-semibold">Edit College</h2>
+            <label class="block"><span class="{{ $label }}">Code</span><input name="code" value="{{ $college->code }}" required maxlength="20" class="{{ $field }}"></label>
+            <label class="block"><span class="{{ $label }}">Full name</span><input name="name" value="{{ $college->name }}" required class="{{ $field }}"></label>
+            <label class="block">
+                <span class="{{ $label }}">New logo (optional, PNG/JPG/WEBP, max 4 MB) – leave empty to keep the current logo</span>
+                <input type="file" name="logo" accept="image/png,image/jpeg,image/webp" class="w-full border rounded px-3 py-1.5 bg-gray-50 text-xs">
+            </label>
+            <div class="flex justify-end gap-3 pt-2">
+                <button type="button" onclick="closeEdit('edit-college-{{ $college->id }}')" class="px-4 py-2 rounded border hover:bg-gray-50">Cancel</button>
+                <button class="px-4 py-2 rounded bg-csu-700 text-white hover:bg-csu-800">Save</button>
+            </div>
+        </form>
+    </div>
+
+    @foreach ($college->programs as $program)
+        <div id="edit-program-{{ $program->id }}" class="edit-modal hidden fixed inset-0 z-[90] bg-black/40 flex items-center justify-center p-4" onclick="if (event.target === this) closeEdit(this.id)">
+            <form method="POST" action="{{ route('librarian.classifications.update', ['program', $program->id]) }}" class="bg-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-3 text-sm">
+                @csrf @method('PUT')
+                <h2 class="text-lg font-semibold">Edit Program</h2>
+                <label class="block"><span class="{{ $label }}">College</span>
+                    <select name="college_id" required class="{{ $field }}">
+                        @foreach ($colleges as $c)<option value="{{ $c->id }}" @selected($c->id == $program->college_id)>{{ $c->code }} – {{ $c->name }}</option>@endforeach
+                    </select>
+                </label>
+                <label class="block"><span class="{{ $label }}">Code</span><input name="code" value="{{ $program->code }}" required maxlength="20" class="{{ $field }}"></label>
+                <label class="block"><span class="{{ $label }}">Full name</span><input name="name" value="{{ $program->name }}" required class="{{ $field }}"></label>
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" onclick="closeEdit('edit-program-{{ $program->id }}')" class="px-4 py-2 rounded border hover:bg-gray-50">Cancel</button>
+                    <button class="px-4 py-2 rounded bg-csu-700 text-white hover:bg-csu-800">Save</button>
+                </div>
+            </form>
+        </div>
+
+        @foreach ($program->subjects as $subject)
+            <div id="edit-subject-{{ $subject->id }}" class="edit-modal hidden fixed inset-0 z-[90] bg-black/40 flex items-center justify-center p-4" onclick="if (event.target === this) closeEdit(this.id)">
+                <form method="POST" action="{{ route('librarian.classifications.update', ['subject', $subject->id]) }}" class="bg-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-3 text-sm">
+                    @csrf @method('PUT')
+                    <h2 class="text-lg font-semibold">Edit Course</h2>
+                    <label class="block"><span class="{{ $label }}">Program</span>
+                        <select name="program_id" required class="{{ $field }}">
+                            @foreach ($colleges as $c)
+                                <optgroup label="{{ $c->code }}">
+                                    @foreach ($c->programs as $p)<option value="{{ $p->id }}" @selected($p->id == $subject->program_id)>{{ $p->code }} – {{ $p->name }}</option>@endforeach
+                                </optgroup>
+                            @endforeach
+                        </select>
+                    </label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="block"><span class="{{ $label }}">Code</span><input name="code" value="{{ $subject->code }}" required maxlength="20" class="{{ $field }}"></label>
+                        <label class="block"><span class="{{ $label }}">Year level</span><input name="year_level" type="number" min="1" max="5" value="{{ $subject->year_level }}" class="{{ $field }}"></label>
+                    </div>
+                    <label class="block"><span class="{{ $label }}">Course name</span><input name="name" value="{{ $subject->name }}" required class="{{ $field }}"></label>
+                    <div class="flex justify-end gap-3 pt-2">
+                        <button type="button" onclick="closeEdit('edit-subject-{{ $subject->id }}')" class="px-4 py-2 rounded border hover:bg-gray-50">Cancel</button>
+                        <button class="px-4 py-2 rounded bg-csu-700 text-white hover:bg-csu-800">Save</button>
+                    </div>
+                </form>
+            </div>
+        @endforeach
+    @endforeach
+@endforeach
+
+<script>
+    function openEdit(id) { document.getElementById(id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    function closeEdit(id) { document.getElementById(id).classList.add('hidden'); document.body.style.overflow = ''; }
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') document.querySelectorAll('.edit-modal:not(.hidden)').forEach(m => closeEdit(m.id));
+    });
+</script>
 @endsection

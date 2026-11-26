@@ -65,6 +65,46 @@ class Recommendation extends Model
             'details' => $details,
             'user_id' => \Illuminate\Support\Facades\Auth::id(),
         ]);
+
+        $this->notifyAbout($action, $remarks);
+    }
+
+    /**
+     * Bell notifications: the librarians hear about new and revised recommendations,
+     * the faculty member hears about every decision on their own recommendation.
+     */
+    private function notifyAbout(string $action, ?string $remarks): void
+    {
+        $this->loadMissing(['faculty', 'subject']);
+        $title = '“'.\Illuminate\Support\Str::limit($this->title, 60).'”';
+        $remark = $remarks ? ': “'.\Illuminate\Support\Str::limit($remarks, 80).'”' : '.';
+
+        if (in_array($action, ['submitted', 'resubmitted'])) {
+            $message = $action === 'submitted'
+                ? "{$this->faculty?->name} recommended {$title} for {$this->subject?->code}."
+                : "{$this->faculty?->name} revised and resubmitted {$title}.";
+            $librarians = User::where('role', 'librarian')->where('is_active', true)->get();
+            \Illuminate\Support\Facades\Notification::send($librarians, new \App\Notifications\SystemNotice(
+                'recommendation', $message, route('librarian.reviews.show', $this)));
+
+            return;
+        }
+
+        $message = match ($action) {
+            'approved' => "Your recommendation {$title} was approved for purchase.",
+            'needs_revision' => "Your recommendation {$title} was returned for revision{$remark}",
+            'rejected' => "Your recommendation {$title} was rejected{$remark}",
+            'fulfilled' => "Your recommendation {$title} is now in the repository.",
+            default => null,
+        };
+        if (! $message || ! $this->faculty) {
+            return;
+        }
+        $resource = $action === 'fulfilled' ? Resource::where('recommendation_id', $this->id)->latest('id')->first() : null;
+        $url = $resource
+            ? route('reader.show', $resource)
+            : route('faculty.recommendations.index', ['open' => $this->id]);
+        $this->faculty->notify(new \App\Notifications\SystemNotice('recommendation', $message, $url));
     }
 
     public function histories()

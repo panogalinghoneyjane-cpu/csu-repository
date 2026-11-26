@@ -39,12 +39,12 @@
     </div>
     <div class="grid sm:grid-cols-3 gap-4">
         <div>
-            <label class="block text-sm font-medium mb-1">Edition</label>
-            <input name="edition" value="{{ old('edition', $recommendation->edition) }}" class="w-full border rounded px-3 py-2">
+            <label class="block text-sm font-medium mb-1">Edition <span class="text-red-600">*</span></label>
+            <input name="edition" value="{{ old('edition', $recommendation->edition) }}" required maxlength="50" placeholder="e.g. 1st, 3rd" class="w-full border rounded px-3 py-2">
         </div>
         <div>
-            <label class="block text-sm font-medium mb-1">Publication Year</label>
-            <input type="number" name="publication_year" value="{{ old('publication_year', $recommendation->publication_year) }}" class="w-full border rounded px-3 py-2">
+            <label class="block text-sm font-medium mb-1">Publication Year <span class="text-red-600">*</span></label>
+            <input type="number" name="publication_year" value="{{ old('publication_year', $recommendation->publication_year) }}" required min="1900" max="{{ now()->year }}" placeholder="e.g. {{ now()->year }}" class="w-full border rounded px-3 py-2">
         </div>
         <div>
             <label class="block text-sm font-medium mb-1">Resource Type <span class="text-red-600">*</span></label>

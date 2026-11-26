@@ -10,12 +10,25 @@ class CourseClass extends Model
 {
     public const SEMESTERS = ['1st Semester', '2nd Semester', 'Summer'];
 
-    protected $fillable = ['faculty_id', 'subject_id', 'section', 'school_year', 'semester', 'description', 'code', 'is_open'];
+    protected $fillable = [
+    'faculty_id',
+    'subject_id',
+    'section',
+    'school_year',
+    'semester',
+    'description',
+    'code',
+    'is_open',
+    'archived_at',
+];
 
-    protected function casts(): array
-    {
-        return ['is_open' => 'boolean'];
-    }
+protected function casts(): array
+{
+    return [
+        'is_open' => 'boolean',
+        'archived_at' => 'datetime',
+    ];
+}
 
     protected static function booted(): void
     {

@@ -80,7 +80,8 @@
 
     <section class="flex-1 min-w-0">
         <h2 class="text-lg font-semibold mb-3">Newly Added to the Repository</h2>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+        {{-- as many columns as fit (each card at least 15rem wide), so cards are never squeezed --}}
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4">
             @foreach ($recent as $resource)
                 @include('partials.resource-card', ['resource' => $resource])
             @endforeach

@@ -26,7 +26,7 @@
 
     @if (! empty($withFilters))
         {{-- Filters (only on the Search page) --}}
-        <div class="grid sm:grid-cols-3 gap-3 text-sm mt-3">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm mt-3">
             <select name="college" onchange="this.form.submit()" class="bg-white border border-gray-300 rounded-full px-4 py-2">
                 <option value="">All colleges</option>
                 @foreach ($colleges as $c)
@@ -37,6 +37,13 @@
                 <option value="">All resource types</option>
                 @foreach ($types as $t)
                     <option @selected(($filters['type'] ?? '') === $t)>{{ $t }}</option>
+                @endforeach
+            </select>
+            {{-- Format: how the resource can be read (any Type can be a PDF, a link or a printed book) --}}
+            <select name="format" onchange="this.form.submit()" class="bg-white border border-gray-300 rounded-full px-4 py-2">
+                <option value="">All formats</option>
+                @foreach (['pdf' => '📄 PDF', 'link' => '🔗 Online link', 'physical' => 'Physical copy in the library'] as $value => $name)
+                    <option value="{{ $value }}" @selected(($filters['format'] ?? '') === $value)>{{ $name }}</option>
                 @endforeach
             </select>
             <select name="year" onchange="this.form.submit()" class="bg-white border border-gray-300 rounded-full px-4 py-2">

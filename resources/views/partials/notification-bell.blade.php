@@ -15,7 +15,15 @@
             ->where('user_id', $bellUser->id)->whereIn('announcement_id', $bellItems->pluck('id'))
             ->pluck('announcement_id')->all();
         $isNew = fn ($a) => ! in_array($a->id, $readIds);
-        $unread = $bellItems->filter($isNew)->count();
+
+        // One list, newest first: announcements + this user's own notifications
+        // (recommendation decisions for faculty, new/revised recommendations for the librarian, new class resources for students)
+        $feed = $bellItems->map(fn ($a) => ['type' => 'announcement', 'item' => $a, 'at' => $a->created_at, 'new' => $isNew($a)])
+            ->concat($bellUser->notifications()->latest()->take(15)->get()
+                ->map(fn ($n) => ['type' => 'notice', 'item' => $n, 'at' => $n->created_at, 'new' => $n->read_at === null]))
+            ->sortByDesc('at')->take(20)->values();
+        $unread = $feed->where('new', true)->count();
+        $kindLabels = ['recommendation' => 'Recommendation', 'class' => 'Class'];
     }
 @endphp
 
@@ -33,7 +41,7 @@
     {{-- List beside the bell --}}
     <div id="bell-dropdown" class="hidden absolute right-0 mt-2 w-[calc(100vw-1.5rem)] max-w-sm sm:w-96 bg-white text-gray-800 rounded-lg shadow-lg border border-csu-700 z-50">
         <div class="flex items-center justify-between px-4 py-3 border-b">
-            <p class="font-semibold">Announcements</p>
+            <p class="font-semibold">Notifications</p>
             <div class="flex items-center gap-3 text-xs">
                 <span id="bell-new-count" class="text-orange-600 {{ $unread ? '' : 'hidden' }}">{{ $unread }} new</span>
                 <button type="button" id="bell-read-all" onclick="markAllRead()"
@@ -41,12 +49,30 @@
             </div>
         </div>
         <div class="max-h-96 overflow-y-auto divide-y">
-            @forelse ($bellItems as $a)
+            @forelse ($feed as $entry)
+                @php $fresh = $entry['new']; @endphp
+                @if ($entry['type'] === 'notice')
+                    {{-- A notification: click marks it read and opens the page it is about --}}
+                    @php $n = $entry['item']; @endphp
+                    <button type="button" onclick="openNotice('{{ $n->id }}', @js($n->data['url'] ?? url('/dashboard')))"
+                            data-notice="{{ $n->id }}" data-new="{{ $fresh ? 1 : 0 }}"
+                            class="bell-item w-full text-left flex gap-3 px-4 py-3 hover:bg-csu-50 {{ $fresh ? 'bg-orange-50' : '' }}">
+                        <span class="bell-dot mt-1.5 w-2 h-2 rounded-full shrink-0 {{ $fresh ? 'bg-orange-500' : 'bg-transparent' }}"></span>
+                        <span class="min-w-0 flex-1">
+                            <span class="block text-[11px] font-semibold uppercase tracking-wide text-csu-700">{{ $kindLabels[$n->data['kind'] ?? ''] ?? 'Update' }}</span>
+                            <span class="block text-sm leading-snug">{{ $n->data['message'] ?? '' }}</span>
+                            <span class="block text-[11px] text-gray-400 mt-0.5">{{ $n->created_at->diffForHumans() }}</span>
+                        </span>
+                    </button>
+                    @continue
+                @endif
+                @php $a = $entry['item']; @endphp
                 <button type="button" onclick="openAnnouncement('ann-{{ $a->id }}', {{ $a->id }})"
-                        data-ann="{{ $a->id }}" data-new="{{ $isNew($a) ? 1 : 0 }}"
-                        class="bell-item w-full text-left flex gap-3 px-4 py-3 hover:bg-csu-50 {{ $isNew($a) ? 'bg-orange-50' : '' }}">
-                    <span class="bell-dot mt-1.5 w-2 h-2 rounded-full shrink-0 {{ $isNew($a) ? 'bg-orange-500' : 'bg-transparent' }}"></span>
+                        data-ann="{{ $a->id }}" data-new="{{ $fresh ? 1 : 0 }}"
+                        class="bell-item w-full text-left flex gap-3 px-4 py-3 hover:bg-csu-50 {{ $fresh ? 'bg-orange-50' : '' }}">
+                    <span class="bell-dot mt-1.5 w-2 h-2 rounded-full shrink-0 {{ $fresh ? 'bg-orange-500' : 'bg-transparent' }}"></span>
                     <span class="min-w-0 flex-1">
+                        <span class="block text-[11px] font-semibold uppercase tracking-wide text-orange-600">Announcement</span>
                         <span class="block font-medium text-sm leading-snug">{{ $a->title }}</span>
                         @if ($a->event_date)
                             <span class="block text-xs text-csu-700">{{ $a->event_date->format('M d, Y') }}
@@ -60,7 +86,7 @@
                     </span>
                 </button>
             @empty
-                <p class="px-4 py-8 text-center text-sm text-gray-500">No announcements yet.</p>
+                <p class="px-4 py-8 text-center text-sm text-gray-500">No notifications yet.</p>
             @endforelse
         </div>
     </div>
@@ -156,6 +182,21 @@
         document.getElementById('bell-dropdown').classList.add('hidden');
         document.getElementById(id).classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+    }
+
+    // A notification: mark it read, then go to the page it is about
+    function openNotice(id, url) {
+        const item = document.querySelector('.bell-item[data-notice="' + id + '"]');
+        const go = () => { location.href = url; };
+        if (item && item.dataset.new === '1') {
+            markItemRead(item);
+            refreshBellCount();
+            fetch('{{ url('/notifications/notice') }}/' + id + '/read',
+                  { method: 'POST', keepalive: true, headers: { 'X-CSRF-TOKEN': bellCsrf, 'Accept': 'application/json' } })
+                .finally(go);
+        } else {
+            go();
+        }
     }
 
     function markAllRead() {

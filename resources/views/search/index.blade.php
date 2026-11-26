@@ -46,7 +46,9 @@
 
         <aside>
             <div class="bg-csu-50 border border-csu-100 rounded-lg p-4 lg:sticky lg:top-4">
-                <h2 class="font-semibold text-csu-800 mb-1">Recommended Resources</h2>
+                <h2 class="font-semibold text-csu-800 mb-1">
+    {{ auth()->user()->role === 'faculty' ? 'Related Resources' : 'Recommended Resources' }}
+</h2>
                 <p class="text-xs text-gray-600 mb-3">Related materials based on your keywords, course classification, and what other readers opened.</p>
                 <div class="space-y-3">
                     @forelse ($related as $resource)

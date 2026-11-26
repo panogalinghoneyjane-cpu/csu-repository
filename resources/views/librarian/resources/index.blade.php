@@ -8,7 +8,7 @@
 </div>
 
 <form class="bg-white rounded-lg border p-4 mb-4 grid sm:grid-cols-5 gap-3 text-sm">
-    <input name="q" value="{{ request('q') }}" placeholder="Search title, author, keyword..." class="sm:col-span-2 border rounded px-3 py-2">
+    <input name="q" value="{{ request('q') }}" placeholder="Search title, author, or year..." class="sm:col-span-2 border rounded px-3 py-2">
     <select name="college" class="border rounded px-3 py-2">
         <option value="">All colleges</option>
         @foreach ($colleges as $c)<option value="{{ $c->id }}" @selected(request('college') == $c->id)>{{ $c->code }}</option>@endforeach

@@ -56,6 +56,43 @@ class ClassificationController extends Controller
         return back()->with('success', ($type === 'subject' ? 'Course' : ucfirst($type)).' added.');
     }
 
+    /** Edit a college (code, name, logo), a program (college, code, name) or a course (program, code, name, year level). */
+    public function update(Request $request, string $type, int $id)
+    {
+        if ($type === 'college') {
+            $college = College::findOrFail($id);
+            $data = $request->validate([
+                'code' => ['required', 'string', 'max:20', 'alpha_dash', 'unique:colleges,code,'.$college->id],
+                'name' => ['required', 'string', 'max:255'],
+                'logo' => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp', 'max:4096'],   // 4 MB
+            ]);
+            $oldCode = $college->code;
+            $college->update(['code' => strtoupper($data['code']), 'name' => $data['name']]);
+            CollegeLogo::rename($oldCode, $college->code);   // the logo file is named after the code
+            if ($request->hasFile('logo')) {
+                CollegeLogo::save($college->code, $request->file('logo'));
+            }
+            $label = 'College';
+        } elseif ($type === 'program') {
+            Program::findOrFail($id)->update($request->validate([
+                'college_id' => ['required', 'exists:colleges,id'],
+                'code' => ['required', 'string', 'max:20'],
+                'name' => ['required', 'string', 'max:255'],
+            ]));
+            $label = 'Program';
+        } else {
+            Subject::findOrFail($id)->update($request->validate([
+                'program_id' => ['required', 'exists:programs,id'],
+                'code' => ['required', 'string', 'max:20'],
+                'name' => ['required', 'string', 'max:255'],
+                'year_level' => ['nullable', 'integer', 'between:1,5'],
+            ]));
+            $label = 'Course';
+        }
+
+        return back()->with('success', $label.' updated.');
+    }
+
     /** Upload or replace a college's logo. */
     public function logo(Request $request, College $college)
     {

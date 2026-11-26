@@ -14,7 +14,7 @@ class SearchController extends Controller
     public function index(Request $request, ResourceRecommender $recommender)
     {
         $q = trim((string) $request->query('q', ''));
-        $filters = $request->only(['college', 'type', 'year']);
+        $filters = $request->only(['college', 'type', 'format', 'year']);
 
         $results = collect();
         $related = collect();
@@ -30,6 +30,13 @@ class SearchController extends Controller
             if (! empty($filters['type'])) {
                 $query->where('resource_type', $filters['type']);
             }
+            // Format: uploaded PDF, online link, or printed copy in the library
+            match ($filters['format'] ?? '') {
+                'pdf' => $query->whereNotNull('file_path')->where(fn ($w) => $w->whereNull('external_url')->orWhere('external_url', '')),
+                'link' => $query->whereNotNull('external_url')->where('external_url', '!=', ''),
+                'physical' => $query->where('has_physical_copy', true),
+                default => null,
+            };
             if (! empty($filters['year'])) {
                 $query->where('publication_year', '>=', (int) $filters['year']);
             }

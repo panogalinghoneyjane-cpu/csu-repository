@@ -10,7 +10,8 @@ class Resource extends Model
     /** A resource is "outdated" when it is older than this many years. */
     public const OUTDATED_AFTER_YEARS = 5;
 
-    public const TYPES = ['Ebook', 'Journal', 'Research Paper', 'Thesis', 'Module', 'Other'];
+    /** Kind of material. The file format (PDF or online link) is chosen separately, so any type can be a PDF. */
+    public const TYPES = ['Ebook', 'Journal', 'Research Paper', 'Other'];
 
     protected $fillable = [
         'subject_id', 'uploaded_by', 'recommendation_id', 'title', 'authors', 'publication_year',
@@ -104,7 +105,7 @@ class Resource extends Model
                 ->orWhereLike('description', $like)
                 ->orWhereLike('content_text', $like)          // text inside the PDF
                 ->orWhereLike('external_url', $like)
-                ->orWhereLike('resource_type', $like)         // Ebook, Journal, Thesis...
+                ->orWhereLike('resource_type', $like)         // Ebook, Journal, Research Paper, Other
                 ->orWhereLike('call_number', $like)           // physical copy
                 ->orWhereLike('shelf_location', $like)
                 ->when($withCourse, fn ($q) => $q->orWhereHas('subject',

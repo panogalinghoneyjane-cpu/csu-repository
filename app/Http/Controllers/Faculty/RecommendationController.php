@@ -104,12 +104,16 @@ class RecommendationController extends Controller
             'subject_id' => ['required', 'exists:subjects,id'],
             'title' => ['required', 'string', 'max:255'],
             'authors' => ['required', 'string', 'max:255'],
-            'publisher' => ['nullable', 'string', 'max:255'],
-            'edition' => ['nullable', 'string', 'max:50'],
-            'publication_year' => ['nullable', 'integer', 'min:1900', 'max:'.(now()->year + 1)],
+            'publisher' => ['nullable', 'string', 'max:255'],      // optional
+            'edition' => ['required', 'string', 'max:50'],
+            'publication_year' => ['required', 'integer', 'min:1900', 'max:'.now()->year],   // not later than this year
             'resource_type' => ['required', Rule::in(Resource::TYPES)],
-            'source_link' => ['nullable', 'url', 'max:500'],
+            'source_link' => ['nullable', 'url', 'max:500'],       // optional
             'reason' => ['required', 'string', 'max:2000'],
+        ], [
+            'edition.required' => 'Please enter the edition (e.g. 1st, 3rd).',
+            'publication_year.required' => 'Please enter the publication year.',
+            'publication_year.max' => 'The publication year cannot be later than '.now()->year.'.',
         ]);
     }
 

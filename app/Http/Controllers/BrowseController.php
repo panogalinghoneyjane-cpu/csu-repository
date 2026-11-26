@@ -57,7 +57,9 @@ class BrowseController extends Controller
         $sort = array_key_exists(request('sort'), $sorts) ? request('sort') : 'year_new';
         [, $column, $direction] = $sorts[$sort];
 
-        $resources = Resource::active()
+        // The librarian also sees hidden resources here (marked "Hidden" on the card); faculty and students do not
+        $resources = Resource::query()
+            ->unless(request()->user()->isLibrarian(), fn ($q) => $q->active())
             ->where('subject_id', $subject->id)
             ->withCount('accessLogs')
             ->orderBy($column, $direction)

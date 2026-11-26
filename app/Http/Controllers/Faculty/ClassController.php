@@ -63,6 +63,28 @@ class ClassController extends Controller
         return redirect()->route('classes.show', $courseClass)->with('success', 'Class updated.');
     }
 
+    public function archive(Request $request, CourseClass $courseClass)
+{
+    $this->authorizeOwner($request, $courseClass);
+
+    $courseClass->archived_at = now();
+    $courseClass->save();
+
+    return redirect()->route('classes.index')
+        ->with('success', 'Class archived successfully.');
+}
+
+public function restore(Request $request, CourseClass $courseClass)
+{
+    $this->authorizeOwner($request, $courseClass);
+
+    $courseClass->archived_at = null;
+    $courseClass->save();
+
+    return redirect()->route('classes.index')
+        ->with('success', 'Class restored successfully.');
+}
+
     public function destroy(Request $request, CourseClass $courseClass)
     {
         $this->authorizeOwner($request, $courseClass);
@@ -80,7 +102,17 @@ class ClassController extends Controller
             'note' => ['nullable', 'string', 'max:500'],
         ]);
 
-        $courseClass->resources()->syncWithoutDetaching([$data['resource_id'] => ['note' => $data['note'] ?? null]]);
+        $changes = $courseClass->resources()->syncWithoutDetaching([$data['resource_id'] => ['note' => $data['note'] ?? null]]);
+
+        // Tell the students of this class (only when the resource is new to the class, not when just the note changed)
+        if (! empty($changes['attached'])) {
+            $resource = Resource::find($data['resource_id']);
+            \Illuminate\Support\Facades\Notification::send($courseClass->students, new \App\Notifications\SystemNotice(
+                'class',
+                'New resource in '.$courseClass->title.': “'.\Illuminate\Support\Str::limit($resource->title, 60).'”.',
+                route('classes.show', $courseClass)
+            ));
+        }
 
         return back()->with('success', 'Resource added to '.$courseClass->title.'.');
     }

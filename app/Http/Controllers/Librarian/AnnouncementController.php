@@ -46,7 +46,7 @@ class AnnouncementController extends Controller
 
     public function update(Request $request, Announcement $announcement)
     {
-        $data = $this->validated($request);
+        $data = $this->validated($request, $announcement);
 
         if ($request->hasFile('image')) {
             $announcement->deleteImage();               // replace the old poster
@@ -69,15 +69,29 @@ class AnnouncementController extends Controller
         return redirect()->route('librarian.announcements.index')->with('success', 'Announcement deleted.');
     }
 
-    private function validated(Request $request): array
+    /**
+     * A date may not be in the past, except the same date that an announcement being edited already has
+     * (so an old announcement can still be edited without changing its date).
+     */
+    private function notPast(string $label, ?Announcement $existing, string $field): \Closure
+    {
+        return function (string $attribute, $value, \Closure $fail) use ($label, $existing, $field) {
+            $date = \Illuminate\Support\Carbon::parse($value)->toDateString();
+            if ($date < now()->toDateString() && $date !== $existing?->{$field}?->toDateString()) {
+                $fail("The {$label} cannot be in the past.");
+            }
+        };
+    }
+
+    private function validated(Request $request, ?Announcement $existing = null): array
     {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:150'],
             'body' => ['required', 'string', 'max:3000'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120'],   // 5 MB
             'audience' => ['required', Rule::in(array_keys(Announcement::AUDIENCES))],
-            'event_date' => ['nullable', 'date'],
-            'show_until' => ['nullable', 'date'],
+            'event_date' => ['nullable', 'date', $this->notPast('event date', $existing, 'event_date')],
+            'show_until' => ['nullable', 'date', $this->notPast('"show until" date', $existing, 'show_until')],
         ], [
             'image.image' => 'The poster must be a picture (JPG, PNG, WEBP or GIF).',
             'image.max' => 'The poster must be 5 MB or smaller.',

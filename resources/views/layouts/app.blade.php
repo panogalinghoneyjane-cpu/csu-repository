@@ -23,6 +23,7 @@
         #sidebar.sidebar-collapsed { width: 0 !important; padding-left: 0 !important; padding-right: 0 !important; border-right-width: 0 !important; opacity: 0; }
     </style>
     @stack('head')
+    @include('partials.form-errors')
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen">
 @php
@@ -188,18 +189,14 @@
 </div>
 @stack('scripts')
 {{-- ===== System confirmation box (replaces the browser's pop-up) ===== --}}
+{{-- Minimal style: no icon, title + message, and text-only buttons (Cancel grey, the action red or green) --}}
 <div id="confirm-box" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/40 p-4">
-    <div class="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
-        <div class="flex items-start gap-3">
-            <div id="confirm-icon" class="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-xl"></div>
-            <div>
-                <h2 id="confirm-title" class="text-lg font-semibold text-gray-900"></h2>
-                <p id="confirm-message" class="text-sm text-gray-600 mt-1"></p>
-            </div>
-        </div>
-        <div class="flex justify-end gap-3 mt-6">
-            <button type="button" id="confirm-cancel" class="px-4 py-2 rounded border hover:bg-gray-50">Cancel</button>
-            <button type="button" id="confirm-ok" class="px-4 py-2 rounded text-white"></button>
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md px-7 pt-6 pb-4">
+        <h2 id="confirm-title" class="text-xl font-semibold text-gray-900"></h2>
+        <p id="confirm-message" class="text-sm text-gray-500 mt-2 leading-relaxed"></p>
+        <div class="flex justify-end gap-1 mt-6">
+            <button type="button" id="confirm-cancel" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100 outline-none focus:bg-gray-100">Cancel</button>
+            <button type="button" id="confirm-ok" class="px-4 py-2 rounded-lg text-sm font-semibold"></button>
         </div>
     </div>
 </div>
@@ -227,10 +224,9 @@
             document.getElementById('confirm-message').textContent = form.dataset.confirm;
             const ok = document.getElementById('confirm-ok');
             ok.textContent = form.dataset.confirmButton || 'Confirm';
-            ok.className = 'px-4 py-2 rounded text-white ' + (danger ? 'bg-red-600 hover:bg-red-700' : 'bg-csu-700 hover:bg-csu-800');
-            const icon = document.getElementById('confirm-icon');
-            icon.className = 'shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-xl ' + (danger ? 'bg-red-100 text-red-600' : 'bg-csu-50 text-csu-700');
-            icon.textContent = danger ? '!' : '?';
+            // text-only button: red for deleting/removing, green for everything else
+            // (focus shows as a soft background instead of the browser's black outline)
+            ok.className = 'px-4 py-2 rounded-lg text-sm font-semibold outline-none ' + (danger ? 'text-red-600 hover:bg-red-50 focus:bg-red-50' : 'text-csu-700 hover:bg-csu-50 focus:bg-csu-50');
 
             box.classList.remove('hidden');
             ok.focus();

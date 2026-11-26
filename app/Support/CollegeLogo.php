@@ -70,6 +70,17 @@ class CollegeLogo
         imagedestroy($source);
     }
 
+    /** When a college's code changes, rename its logo file so the logo stays with the college. */
+    public static function rename(string $oldCode, string $newCode): void
+    {
+        if (strtolower($oldCode) === strtolower($newCode) || ! ($old = self::path($oldCode))) {
+            return;
+        }
+        self::delete($newCode);   // a leftover file under the new code must not win over the real logo
+        $ext = pathinfo($old, PATHINFO_EXTENSION);
+        rename(public_path($old), public_path(self::DIR.'/'.strtolower($newCode).'.'.$ext));
+    }
+
     public static function delete(string $code): void
     {
         foreach (self::EXTENSIONS as $ext) {

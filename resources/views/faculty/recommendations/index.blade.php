@@ -9,13 +9,23 @@
     </div>
        <a href="{{ route('faculty.recommendations.create') }}" class="self-start shrink-0 text-sm bg-csu-700 text-white px-3 py-1.5 rounded hover:bg-csu-800">+ Recommend a Resource</a>
 </div>
-{{-- Filter tabs --}}
+{{-- Filter tabs (same colors as the librarian's review tabs). [normal, selected] --}}
+@php
+    $tabColors = [
+        'all'            => ['bg-white text-csu-800 border-csu-700',            'bg-csu-700 text-white border-csu-700'],
+        'pending'        => ['bg-yellow-100 text-yellow-800 border-yellow-300', 'bg-yellow-500 text-white border-yellow-500'],
+        'approved'       => ['bg-blue-100 text-blue-800 border-blue-300',       'bg-blue-600 text-white border-blue-600'],
+        'needs_revision' => ['bg-orange-100 text-orange-800 border-orange-300', 'bg-orange-500 text-white border-orange-500'],
+        'rejected'       => ['bg-red-100 text-red-800 border-red-300',          'bg-red-600 text-white border-red-600'],
+        'fulfilled'      => ['bg-green-100 text-green-800 border-green-300',    'bg-green-600 text-white border-green-600'],
+    ];
+@endphp
 <div class="flex flex-wrap gap-2 mb-4 text-sm">
     <a href="{{ route('faculty.recommendations.index') }}"
-       class="px-3 py-1.5 rounded-full border {{ $status ? 'bg-white hover:bg-gray-50' : 'bg-csu-700 text-white border-csu-700' }}">All</a>
+       class="px-3 py-1.5 rounded-full border font-medium hover:shadow-sm {{ $tabColors['all'][$status ? 0 : 1] }}">All</a>
     @foreach (\App\Models\Recommendation::STATUS_LABELS as $value => $label)
         <a href="{{ route('faculty.recommendations.index', ['status' => $value]) }}"
-           class="px-3 py-1.5 rounded-full border {{ $status === $value ? 'bg-csu-700 text-white border-csu-700' : 'bg-white hover:bg-gray-50' }}">{{ $label }}</a>
+           class="px-3 py-1.5 rounded-full border font-medium hover:shadow-sm {{ $tabColors[$value][$status === $value ? 1 : 0] }}">{{ $label }}</a>
     @endforeach
 </div>
 
@@ -104,6 +114,12 @@
 
 <script>
     function openHistory(id) { document.getElementById(id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+
+    // Opened from a bell notification (?open=ID): show that recommendation's history right away
+    (function () {
+        const id = new URLSearchParams(location.search).get('open');
+        if (id && document.getElementById('history-' + id)) openHistory('history-' + id);
+    })();
     function closeHistory(id) { document.getElementById(id).classList.add('hidden'); document.body.style.overflow = ''; }
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') document.querySelectorAll('.history-modal:not(.hidden)').forEach(m => closeHistory(m.id));

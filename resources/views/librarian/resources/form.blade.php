@@ -34,7 +34,7 @@
     <div class="grid sm:grid-cols-4 gap-4">
         <div>
             <label class="block text-sm font-medium mb-1">Publication Year <span class="text-red-600">*</span></label>
-            <input type="number" name="publication_year" min="1900" max="{{ now()->year + 1 }}" value="{{ old('publication_year', $resource->publication_year) }}" required class="w-full border rounded px-3 py-2">
+            <input type="number" name="publication_year" min="1900" max="{{ now()->year }}" value="{{ old('publication_year', $resource->publication_year) }}" required class="w-full border rounded px-3 py-2">
         </div>
         <div>
             <label class="block text-sm font-medium mb-1">Type <span class="text-red-600">*</span></label>

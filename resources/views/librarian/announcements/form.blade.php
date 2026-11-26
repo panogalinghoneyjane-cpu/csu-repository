@@ -58,12 +58,21 @@
         </div>
         <div>
             <label class="block text-sm font-medium mb-1">Event date</label>
-            <input type="date" name="event_date" value="{{ old('event_date', $announcement->event_date?->format('Y-m-d')) }}" class="w-full border rounded px-3 py-2">
+            {{-- Past days are greyed out. Editing an old announcement keeps its old date allowed (no limit) so it can still be saved. --}}
+            @php
+                $today = now()->toDateString();
+                $minFor = fn ($saved) => ($saved && $saved->toDateString() < $today) ? null : $today;
+            @endphp
+            <input type="date" name="event_date" value="{{ old('event_date', $announcement->event_date?->format('Y-m-d')) }}"
+                   @if ($min = $minFor($announcement->event_date)) min="{{ $min }}" @endif
+                   data-min-message="The event date cannot be in the past." class="w-full border rounded px-3 py-2">
             <p class="text-xs text-gray-500 mt-1">Optional, e.g. the book fair day.</p>
         </div>
         <div>
             <label class="block text-sm font-medium mb-1">Show until</label>
-            <input type="date" name="show_until" value="{{ old('show_until', $announcement->show_until?->format('Y-m-d')) }}" class="w-full border rounded px-3 py-2">
+            <input type="date" name="show_until" value="{{ old('show_until', $announcement->show_until?->format('Y-m-d')) }}"
+                   @if ($min = $minFor($announcement->show_until)) min="{{ $min }}" @endif
+                   data-min-message="The &quot;show until&quot; date cannot be in the past." class="w-full border rounded px-3 py-2">
             <p class="text-xs text-gray-500 mt-1">Leave blank to always show.</p>
         </div>
     </div>

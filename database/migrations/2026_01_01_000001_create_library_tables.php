@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('authors');
             $table->unsignedSmallInteger('publication_year');
-            $table->string('resource_type');             // Ebook, Journal, Research Paper, Thesis, Module
+            $table->string('resource_type');             // Ebook, Journal, Research Paper, Other
             $table->string('academic_year')->nullable(); // e.g. 2026-2027
             $table->text('description')->nullable();
             $table->string('keywords')->nullable();      // comma-separated, used by search + related resources

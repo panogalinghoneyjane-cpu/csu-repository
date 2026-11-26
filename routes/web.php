@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
         ->name('notifications.read-all');
     Route::post('/notifications/{announcement}/read', [NotificationController::class, 'read'])
         ->name('notifications.read');
+    Route::post('/notifications/notice/{id}/read', [NotificationController::class, 'readNotice'])
+        ->name('notifications.notice.read');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Browse by classification: College -> Program -> Subject
@@ -84,6 +86,8 @@ Route::middleware(['auth', 'role:faculty'])->prefix('faculty')->name('faculty.')
     Route::get('/classes/{courseClass}/edit', [FacultyClassController::class, 'edit'])->name('classes.edit');
     Route::put('/classes/{courseClass}', [FacultyClassController::class, 'update'])->name('classes.update');
     Route::delete('/classes/{courseClass}', [FacultyClassController::class, 'destroy'])->name('classes.destroy');
+    Route::patch('/classes/{courseClass}/archive', [FacultyClassController::class, 'archive'])->name('classes.archive');
+Route::patch('/classes/{courseClass}/restore', [FacultyClassController::class, 'restore'])->name('classes.restore');
     Route::post('/classes/{courseClass}/resources', [FacultyClassController::class, 'addResource'])->name('classes.resources.add');
     Route::delete('/classes/{courseClass}/resources/{resource}', [FacultyClassController::class, 'removeResource'])->name('classes.resources.remove');
            Route::delete('/classes/{courseClass}/students/{student}', [FacultyClassController::class, 'removeStudent'])->name('classes.students.remove');
@@ -113,6 +117,8 @@ Route::middleware(['auth', 'role:librarian'])->prefix('librarian')->name('librar
     Route::post('/classifications/{type}', [ClassificationController::class, 'store'])
         ->whereIn('type', ['college', 'program', 'subject'])->name('classifications.store');
     Route::post('/classifications/college/{college}/logo', [ClassificationController::class, 'logo'])->name('classifications.logo');
+    Route::put('/classifications/{type}/{id}', [ClassificationController::class, 'update'])
+        ->whereIn('type', ['college', 'program', 'subject'])->whereNumber('id')->name('classifications.update');
     Route::delete('/classifications/{type}/{id}', [ClassificationController::class, 'destroy'])
         ->whereIn('type', ['college', 'program', 'subject'])->name('classifications.destroy');
 

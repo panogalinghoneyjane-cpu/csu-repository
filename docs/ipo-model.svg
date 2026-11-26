@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="839" viewBox="0 0 1920 839" font-family="Arial, Helvetica, sans-serif">
+<rect width="1920" height="839" fill="#fff"/>
+<rect x="30" y="30" width="540" height="769" fill="#fff" stroke="#000" stroke-width="3"/>
+<rect x="30" y="30" width="540" height="80" fill="#5aa0f0" stroke="#000" stroke-width="3"/>
+<text x="300.0" y="83" font-size="38" font-weight="bold" text-anchor="middle">INPUT</text>
+<circle cx="60" cy="143" r="4.5" fill="#000"/>
+<text x="76" y="150" font-size="21">Login Credentials (ID Number or Email</text>
+<text x="76" y="179" font-size="21">and Password) of the Librarian, Faculty</text>
+<text x="76" y="208" font-size="21">and Students</text>
+<circle cx="60" cy="242" r="4.5" fill="#000"/>
+<text x="76" y="249" font-size="21">Faculty Resource Recommendations</text>
+<text x="76" y="278" font-size="21">(Title, Author, Publisher, Year, Type,</text>
+<text x="76" y="307" font-size="21">Course, Reason, Link)</text>
+<circle cx="60" cy="341" r="4.5" fill="#000"/>
+<text x="76" y="348" font-size="21">Librarian Decisions and Remarks</text>
+<text x="76" y="377" font-size="21">(Approve, Reject, Return for Revision)</text>
+<circle cx="60" cy="411" r="4.5" fill="#000"/>
+<text x="76" y="418" font-size="21">Digital Resources Uploaded by the</text>
+<text x="76" y="447" font-size="21">Librarian (PDF File or Online Link)</text>
+<circle cx="60" cy="481" r="4.5" fill="#000"/>
+<text x="76" y="488" font-size="21">Resource Metadata (Title, Author,</text>
+<text x="76" y="517" font-size="21">Publication Year, Resource Type,</text>
+<text x="76" y="546" font-size="21">Description, Keywords, Physical Copy</text>
+<text x="76" y="575" font-size="21">Details)</text>
+<circle cx="60" cy="609" r="4.5" fill="#000"/>
+<text x="76" y="616" font-size="21">Classification Data (College, Program,</text>
+<text x="76" y="645" font-size="21">Course)</text>
+<circle cx="60" cy="679" r="4.5" fill="#000"/>
+<text x="76" y="686" font-size="21">Class Details and Class Link or Code</text>
+<circle cx="60" cy="720" r="4.5" fill="#000"/>
+<text x="76" y="727" font-size="21">Announcements</text>
+<circle cx="60" cy="761" r="4.5" fill="#000"/>
+<text x="76" y="768" font-size="21">Search Keywords and Filters</text>
+<polygon points="582,396.5 637,396.5 637,376.5 678,414.5 637,452.5 637,432.5 582,432.5" fill="#fff" stroke="#000" stroke-width="3"/>
+<rect x="690" y="30" width="540" height="769" fill="#fff" stroke="#000" stroke-width="3"/>
+<rect x="690" y="30" width="540" height="80" fill="#5aa0f0" stroke="#000" stroke-width="3"/>
+<text x="960.0" y="83" font-size="38" font-weight="bold" text-anchor="middle">PROCESS</text>
+<circle cx="720" cy="143" r="4.5" fill="#000"/>
+<text x="736" y="150" font-size="21">User Authentication and Role-Based</text>
+<text x="736" y="179" font-size="21">Access Control</text>
+<circle cx="720" cy="213" r="4.5" fill="#000"/>
+<text x="736" y="220" font-size="21">Resource Upload and Classification</text>
+<text x="736" y="249" font-size="21">(College, Program, Course)</text>
+<circle cx="720" cy="283" r="4.5" fill="#000"/>
+<text x="736" y="290" font-size="21">PDF Text Extraction for Full-Text</text>
+<text x="736" y="319" font-size="21">Search</text>
+<circle cx="720" cy="353" r="4.5" fill="#000"/>
+<text x="736" y="360" font-size="21">Keyword-Based Search with Filters and</text>
+<text x="736" y="389" font-size="21">Voice Search</text>
+<circle cx="720" cy="423" r="4.5" fill="#000"/>
+<text x="736" y="430" font-size="21">Recommendation Review and Tracking</text>
+<text x="736" y="459" font-size="21">(Approve, Reject, Return for Revision,</text>
+<text x="736" y="488" font-size="21">with History)</text>
+<circle cx="720" cy="522" r="4.5" fill="#000"/>
+<text x="736" y="529" font-size="21">Resource Recommendation Based on</text>
+<text x="736" y="558" font-size="21">Program, College, Searches and Reading</text>
+<text x="736" y="587" font-size="21">History</text>
+<circle cx="720" cy="621" r="4.5" fill="#000"/>
+<text x="736" y="628" font-size="21">Class Management (Create Class, Share</text>
+<text x="736" y="657" font-size="21">Link or Code, Add Resources)</text>
+<circle cx="720" cy="691" r="4.5" fill="#000"/>
+<text x="736" y="698" font-size="21">Announcement Posting and Notification</text>
+<circle cx="720" cy="732" r="4.5" fill="#000"/>
+<text x="736" y="739" font-size="21">Usage Monitoring and Resource Adequacy</text>
+<text x="736" y="768" font-size="21">Analysis</text>
+<polygon points="1242,396.5 1297,396.5 1297,376.5 1338,414.5 1297,452.5 1297,432.5 1242,432.5" fill="#fff" stroke="#000" stroke-width="3"/>
+<rect x="1350" y="30" width="540" height="769" fill="#fff" stroke="#000" stroke-width="3"/>
+<rect x="1350" y="30" width="540" height="80" fill="#5aa0f0" stroke="#000" stroke-width="3"/>
+<text x="1620.0" y="83" font-size="38" font-weight="bold" text-anchor="middle">OUTPUT</text>
+<circle cx="1380" cy="143" r="4.5" fill="#000"/>
+<text x="1396" y="150" font-size="21">Secure, View-Only Access to Digital</text>
+<text x="1396" y="179" font-size="21">Resources Based on User Role</text>
+<circle cx="1380" cy="213" r="4.5" fill="#000"/>
+<text x="1396" y="220" font-size="21">Organized Digital Library Repository</text>
+<text x="1396" y="249" font-size="21">(by College, Program and Course)</text>
+<circle cx="1380" cy="283" r="4.5" fill="#000"/>
+<text x="1396" y="290" font-size="21">Relevant Search Results with</text>
+<text x="1396" y="319" font-size="21">Highlighted Keywords</text>
+<circle cx="1380" cy="353" r="4.5" fill="#000"/>
+<text x="1396" y="360" font-size="21">Personalized Recommended Resources</text>
+<circle cx="1380" cy="394" r="4.5" fill="#000"/>
+<text x="1396" y="401" font-size="21">Approved Resources Added to the</text>
+<text x="1396" y="430" font-size="21">Repository, with Recommendation Status</text>
+<text x="1396" y="459" font-size="21">and History</text>
+<circle cx="1380" cy="493" r="4.5" fill="#000"/>
+<text x="1396" y="500" font-size="21">Class Resource Lists for Faculty and</text>
+<text x="1396" y="529" font-size="21">Students</text>
+<circle cx="1380" cy="563" r="4.5" fill="#000"/>
+<text x="1396" y="570" font-size="21">Announcements and Notifications</text>
+<circle cx="1380" cy="604" r="4.5" fill="#000"/>
+<text x="1396" y="611" font-size="21">Monitoring Reports (Resource Adequacy</text>
+<text x="1396" y="640" font-size="21">per Course, Usage by Role, Top</text>
+<text x="1396" y="669" font-size="21">Resources) with CSV Export</text>
+</svg>

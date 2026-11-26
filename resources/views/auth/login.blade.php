@@ -11,6 +11,7 @@
         html, body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
+    @include('partials.form-errors')
 </head>
 <body class="min-h-screen flex items-center justify-center p-4"
       style="background:

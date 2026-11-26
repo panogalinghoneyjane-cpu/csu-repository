@@ -56,19 +56,11 @@
                 <p class="mt-3 text-xs bg-blue-50 border border-blue-200 text-blue-800 rounded px-3 py-2">
                     Online resource. It opens on the publisher's website in a new tab. Your access is recorded.
                 </p>
-            @else
-                @if ($canCopy)
-                    <div class="mt-3 text-xs bg-csu-50 border border-csu-100 text-csu-800 rounded px-3 py-2 flex flex-wrap items-center justify-between gap-2">
-                        <span>Librarian view: you can select and copy text from the pages (Ctrl + C). Students and faculty can only view.</span>
-                        @if ($resource->content_text)
-                            <button type="button" id="copy-all-text" class="bg-csu-700 text-white px-3 py-1 rounded hover:bg-csu-800">Copy all text</button>
-                        @endif
-                    </div>
-                @else
-                    <p class="mt-3 text-xs bg-yellow-50 border border-yellow-200 text-yellow-800 rounded px-3 py-2">
-                        View-only resource. Downloading, printing and copying are disabled per library policy. Your access is recorded.
-                    </p>
-                @endif
+            @elseif (! $canCopy)
+                {{-- Students and faculty: view only. (The librarian can select and copy text with the mouse, no notice needed.) --}}
+                <p class="mt-3 text-xs bg-yellow-50 border border-yellow-200 text-yellow-800 rounded px-3 py-2">
+                    View-only resource. Downloading, printing and copying are disabled per library policy. Your access is recorded.
+                </p>
             @endif
         </div>
 
@@ -186,11 +178,7 @@
     document.getElementById('zoom-out').onclick = () => { if (scale > 0.4) { scale = Math.max(0.3, scale - 0.2); renderAll(); } };
 
     if (canCopy) {
-        // "Copy all text" button: copies every word found in the PDF
-        const copyBtn = document.getElementById('copy-all-text');
-        if (copyBtn) copyBtn.onclick = () => navigator.clipboard.writeText(@json((string) $resource->content_text))
-            .then(() => { copyBtn.textContent = 'Copied'; setTimeout(() => copyBtn.textContent = 'Copy all text', 2000); });
-        return;   // no copy/print blocking for the librarian
+        return;   // no copy/print blocking for the librarian (select text with the mouse, Ctrl + C)
     }
 
     // Students and faculty: block common save / print / copy / view-source shortcuts
